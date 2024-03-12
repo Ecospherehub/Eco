@@ -1,0 +1,311 @@
+<!-- DIYProjects.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphereHub - DIY Projects</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 0.5em;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 5px;
+        }
+
+        section {
+            padding: 1em;
+        }
+
+        .diy-project {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-info {
+            margin-top: 15px;
+        }
+
+        .user-upload {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.5s;
+        }
+
+        .project-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .project-card {
+            width: 30%;
+            margin: 15px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .project-card img {
+            width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>EcoSphereHub - DIY Projects</h1>
+    </header>
+
+    <nav>
+        <a href="carbon.html">Carbon Calculator</a>
+        <a href="#innovation">Green Innovation Showcase</a>
+        <a href="#tours">Virtual Eco-Tours</a>
+        <a href="#reviews">Eco-Friendly Product Reviews</a>
+        <a href="#jobs">Green Jobs Directory</a>
+        <a href="#games">Educational Games and Quizzes</a>
+        <a href="DIYProjects.html">DIY Sustainability Projects</a>
+        <a href="#maps">Local Environmental Impact Maps</a>
+        <a href="#recipes">Eco-Friendly Recipes</a>
+        <a href="#challenges">Monthly Eco Challenges</a>
+        <!-- User Profile Link -->
+        <a href="profile.html" onclick="showUserProfile()">User Profile</a>
+    </nav>
+
+    <section class="project-gallery">
+        <!-- Project 1 -->
+        <div class="project-card">
+            <img src="https://www.papernstitchblog.com/wp-content/uploads/2020/01/dish-scrubber-kitchen-eco-project.jpg" alt="Project 1" width="100" height="250">
+            <h3>Swapping out your old sponge for a DIY natural dish scrubber</h3>
+            <p>This is one of my most used eco friendly projects to date and probably one of my favorites too!
+                These DIY dish scrubbers are made out of one single material, jute! And that’s it!
+
+There are no other supplies needed to make one of these scrubbers and each one lasts a really long time. Months and months!
+
+But the best part? When you’re ready to swap it out for a new one, your old jute dish scrubber is completely compostable.
+
+So you can feel good about replacing it with a new one when you need to.
+            </p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/GLpSldN2e3M">Watch Video</a></p>
+                <p>SOURCE: <a href="https://www.papernstitchblog.com/eco-friendly-projects/">papernstitchblog</a></p>
+            </div>
+        </div>
+
+        <!-- Add more project cards as needed --><div class="project-card">
+            <img src="https://climeon.com/wp-content/uploads/2022/10/renewable-energy-mix-1.png" alt="Project 2">
+            <h3>Renewable Energy</h3>
+            <p>Renewable Energy for Electricity. Solar photovoltaic (PV) installations convert the sun's energy into electricity, using photovoltaic cells, or solar panels.Renewable energy. The burning of fossil fuels pollutes the air and contributes to global warming. Time to get rid of this ancient energy source</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/Giek094C_l4">Watch Video</a></p>
+                <p>SOURCE: <a href="https://www.greenmatch.co.uk/blog/how-to-be-more-eco-friendly">greenmatch</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="http://t2.gstatic.com/images?q=tbn:ANd9GcSRWGxgARxKmBhFuhJ-YJ5pRL7ya4L8jGN-8wUpFV0Sgfy8MhdD" alt="Project 3"  width="100" height="250">
+            <h3>Composter</h3>
+            <p>A composter is one of those easy DIY building projects that have long-lasting environmental benefits. Composting diverts waste from landfills, redirects food waste, enriches your garden without chemical fertilizers and even helps trap carbon. Backyard Feast offers a kind of step by step guide to building a 3-bin composter that will be the envy of your composting friends</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/MryNKPPvFbk">Watch Video</a></p>
+                <p>SOURCE: <a href="https://greenbuildingcanada.ca/11-diy-building-projects-green-home/">greenbuildingcanada</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/a/a4/Blue_jay_%28Cyanocitta_cristata%29_on_bird_feeder.jpg" alt="Project 4" width="100" height="250">
+            <h3>Easy Bird Feeder</h3>
+            <p>Hanging feeders close to your home can bring in winter birds for some birdwatching fun. And the birds will really appreciate the food you provide. You might make feeders from a wide range of reclaimed materials, so it's likely you already have some materials close at hand that you can use. 
+
+                Place nesting boxes now, and the birds looking for a nesting spot in late winter and early spring are far more likely to choose to stay in your garden.</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/ttGw8C1QUPQ">Watch Video</a></p>
+                <p>SOURCE:<a href="https://www.treehugger.com/sustainable-diy-projects-garden-holidays-5213995">treehugger</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2020/1/9/2/original_Shain-Rievley_rainbarrel-beauty2.jpg.rend.hgtvcom.616.411.suffix/1580747509103.jpeg" alt="Project 1"width="100" height="250">
+            <h3>Rain Barrel</h3>
+            <p>A rainwater tank is a water tank used to collect and store rain water runoff, typically from rooftops via pipes. Rainwater tanks are devices for collecting and maintaining harvested rain. A rainwater catchment or collection system can yield 2,358 litres of water from 2.54 cm of rain on a 92.9 m² roof.</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/AWDUjUxs3iI">Watch Video</a></p>
+                <p>SOURCE: <a href="https://greenbuildingcanada.ca/11-diy-building-projects-green-home/">greenbuildingcanada</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://c02.purpledshub.com/uploads/sites/51/2020/05/sustainable-diy-and-crafts-4-6dc0dd7.jpg?webp=1" alt="Project 1" width="100" height="250">
+            <h3>Reusable Paper Towel</h3>
+            <p>Reusable paper towels. Kitchen towel is super unsustainable, so luckily A Beautiful Mess shows you how to make your own washable towels.</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/ccks_ak-Sws">Watch Video</a></p>
+                <p>SOURCE:<a href="https://www.gathered.how/arts-crafts/43-sustainable-diy-and-crafts">gathered.how/arts-crafts</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://empire-s3-production.bobvila.com/slides/41402/vertical_slide_wide/Recycle.jpg?1613441801" alt="Project 1" width="100" height="350">
+            <h3>Recycle</h3>
+            <p>6. RECYCLE PROPERLY
+                Many people don’t realize the importance of recycling. Beyond reducing the amount of waste sent to landfills, recycling prevents pollution, saves energy and helps in the conservation of valuable resources. But if you’re tossing items into a recycling bin without checking if they can actually be recycled (aka, “wishcycling”), you could be doing our planet more harm than good.
+                
+                When you throw paper coffee cups, grease-stained pizza boxes and other items that can’t be recycled into the recycling bin, it contaminates the system and forces recyclers to send the entire load of recyclables to landfills or incinerators.</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/HkHEJEzMKwc">Watch Video</a></p>
+                <p>SOURCE: <a href="https://www.teachstarter.com/us/blog/environmental-activities-for-students-sustainability-classroom/">teachstarter</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/LA2_Skultuna_kontorsljusstake.jpg/800px-LA2_Skultuna_kontorsljusstake.jpg" alt="Project 1" width="100" height="350">
+            <h3>Homemade Candles</h3>
+            <p>Turning off all the lights in your home and working by candlelight is a great way to conserve energy. While you need to be extremely careful, eating a meal or playing a few board games by candlelight is a great way to reconnect with your family and friends.</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/2rhZ7lzaU4Y">Watch Video</a></p>
+                <p>SOURCE: <a href="https://www.electricchoice.com/blog/earth-day-diy-projects/">electricchoice</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://www.weareteachers.com/wp-content/uploads/recycledcity.webp" alt="Project 1" width="100" height="250">
+            <h3>Try recycling crafts</h3>
+            <p>It's important to teach students the environmental benefits of recycling, like conserving energy and natural resources and reducing air and water pollution, </p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/-feW-PNFnQ4">Watch Video</a></p>
+                <p>SOURCE:<a href="https://www.weareteachers.com/earth-day-crafts-classroom-activities/">weareteachers</a></p>
+            </div>
+        </div><div class="project-card">
+            <img src="https://cdn.britannica.com/85/162485-050-7670426D/Solar-panel-array-rooftop.jpg" alt="Project 1" width="100" height="250">
+            <h3>Upcycled Planters</h3>
+            <p>Cooking food with the sun? Absolutely possible. Solar cookers can reach impressive temperatures, depending on the type, explains Merry Bevill of Sunshine on My Shoulder. She states that a parabolic cooker can get between “500°F (260°C) – 700°F (371°C);” more than hot enough to cook dinne</p>
+            <div class="project-info">
+                <p>Tutorial: <a href="https://youtu.be/Z1rgluKJBmY">Watch Video</a></p>
+                <p>SOURCE:<a href="https://greenbuildingcanada.ca/11-diy-building-projects-green-home/">greenbuildingcanada</a></p>
+            </div>
+      
+    </section>
+
+    <section class="user-upload">
+        <h2>Share Your DIY Project</h2>
+        <form id="projectSubmissionForm" onsubmit="submitProject(event)">
+            <label for="projectTitle">Project Title:</label>
+            <input type="text" id="projectTitle" name="projectTitle" required>
+
+            <label for="projectDescription">Project Description:</label>
+            <textarea id="projectDescription" name="projectDescription" required></textarea>
+
+            <label for="tutorialLink">Tutorial Link:</label>
+            <input type="url" id="tutorialLink" name="tutorialLink">
+
+            <label for="projectLinks">Additional Links:</label>
+            <input type="url" id="projectLinks" name="projectLinks">
+
+            <label for="projectImages">Project Images (URLs, separated by commas):</label>
+            <textarea id="projectImages" name="projectImages"></textarea>
+
+            <label for="fileUpload">Upload Files:</label>
+            <input type="file" id="fileUpload" name="fileUpload" multiple>
+
+            <button type="submit">Submit Project</button>
+        </form>
+    </section>
+
+    <div class="popup" id="popupAlert">
+        <p>Your project is submitted! Please wait for approval to be published.</p>
+    </div>
+
+    <script>
+        function showUserProfile() {
+            const userProfile = document.getElementById('userProfile');
+            userProfile.style.display = 'block';
+
+            // Simulated user details (replace with actual user details)
+            const user = {
+                name: "John Doe",
+                email: "john@example.com",
+                phone: "+1234567890",
+                age: 30
+            };
+
+            // Store user details in local storage
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Populate user details in the profile section
+            document.getElementById('userImage').src = "default_profile.jpg"; // Replace with the actual image source
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = "Email: " + user.email;
+            document.getElementById('userPhone').textContent = "Phone: " + user.phone;
+            document.getElementById('userAge').textContent = "Age: " + user.age;
+        }
+
+        function submitProject(event) {
+            event.preventDefault();
+
+            // Retrieve project details from the form
+            const projectTitle = document.getElementById('projectTitle').value;
+            const projectDescription = document.getElementById('projectDescription').value;
+            const tutorialLink = document.getElementById('tutorialLink').value;
+            const projectLinks = document.getElementById('projectLinks').value;
+            const projectImages = document.getElementById('projectImages').value.split(',');
+            const fileUpload = document.getElementById('fileUpload').files;
+
+            // Display the popup alert
+            const popupAlert = document.getElementById('popupAlert');
+            popupAlert.style.display = 'block';
+
+            // Log the project details to the console for demonstration purposes
+            console.log("Submitted Project:");
+            console.log("Title:", projectTitle);
+            console.log("Description:", projectDescription);
+            console.log("Tutorial Link:", tutorialLink);
+            console.log("Additional Links:", projectLinks);
+            console.log("Project Images:", projectImages);
+            console.log("Uploaded Files:", fileUpload);
+
+            // Reset form fields
+            document.getElementById('projectSubmissionForm').reset();
+
+            // Automatically hide the popup after 5 seconds
+            setTimeout(function () {
+                popupAlert.style.display = 'none';
+            }, 5000);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint Calculator</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      background-color: #f4f4f4;
+      background-image: url('https://media.istockphoto.com/id/1353967009/photo/sustainable-development-and-green-business-based-on-renewable-energy-reduce-co2-emission.jpg?s=612x612&w=0&k=20&c=-uOboxq_hAl7fFPTtYe3XSnExeeUVMVrpp0kKYNoTvI=');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    #calculator {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 400px;
+      text-align: center;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    input, select, button {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #suggestions {
+      margin-top: 20px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+      text-align: left;
+    }
+
+    .suggestion {
+      margin-bottom: 10px;
+    }
+
+    #recalculateBtn {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      transition: opacity 0.3s ease-in-out;
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .close-btn {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h2>Carbon Footprint Calculator</h2>
+    <label for="distance">Enter your distance (km): </label>
+    <input type="number" id="distance" placeholder="e.g., 100">
+<br>
+    <label for="fuel">Select your fuel type: </label>
+    <select id="fuel">
+      <option value="gasoline">Gasoline</option>
+      <option value="diesel">Diesel</option>
+      <option value="electric">Electric</option>
+    </select>
+
+    <button onclick="calculateFootprint()">Calculate</button>
+
+    <div id="result"></div>
+
+    <div id="suggestions">
+      <h3>Ways to Reduce Carbon Footprint:</h3>
+      <div class="suggestion">Use energy-efficient light bulbs</div>
+      <div class="suggestion">Reduce water usage</div>
+      <div class="suggestion">Plant trees to offset carbon emissions</div>
+    </div>
+
+    <button id="recalculateBtn" onclick="recalculate()">Recalculate</button>
+
+    <div class="popup" id="popup">
+      <div class="popup-content">
+        <p>Please enter the distance before calculating.</p>
+        <button class="close-btn" onclick="closePopup()">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function calculateFootprint() {
+      const distance = parseFloat(document.getElementById('distance').value);
+
+      if (isNaN(distance)) {
+        openPopup();
+        return;
+      }
+
+      const fuelType = document.getElementById('fuel').value;
+
+      let emissionFactor;
+
+      switch (fuelType) {
+        case 'gasoline':
+          emissionFactor = 2.3; // Modify these values based on actual emission factors
+          break;
+        case 'diesel':
+          emissionFactor = 2.7;
+          break;
+        case 'electric':
+          emissionFactor = 0.5;
+          break;
+        default:
+          emissionFactor = 0;
+      }
+
+      const carbonFootprint = distance * emissionFactor;
+
+      displayResult(carbonFootprint);
+    }
+
+    function displayResult(footprint) {
+      const resultElement = document.getElementById('result');
+      const suggestionsElement = document.getElementById('suggestions');
+
+      resultElement.innerHTML = `<p>Your carbon footprint is ${footprint.toFixed(2)} kg CO2.</p>`;
+
+      if (footprint <= 50) {
+        resultElement.innerHTML += '<p>Your carbon footprint level is low.</p>';
+      } else if (footprint <= 100) {
+        resultElement.innerHTML += '<p>Your carbon footprint level is moderate.</p>';
+      } else {
+        resultElement.innerHTML += '<p>Your carbon footprint level is high. Consider reducing it.</p>';
+      }
+
+      suggestionsElement.style.maxHeight = '200px'; // Adjust to a suitable height
+      suggestionsElement.style.opacity = '1';
+      animateSuggestions();
+    }
+
+    function animateSuggestions() {
+      const suggestions = document.querySelectorAll('.suggestion');
+      suggestions.forEach((suggestion, index) => {
+        suggestion.style.transitionDelay = `${index * 0.5}s`;
+      });
+    }
+
+    function recalculate() {
+      const suggestionsElement = document.getElementById('suggestions');
+      suggestionsElement.style.maxHeight = '0';
+      suggestionsElement.style.opacity = '0';
+
+      setTimeout(() => {
+        const suggestions = document.querySelectorAll('.suggestion');
+        suggestions.forEach(suggestion => {
+          suggestion.style.transitionDelay = '0s';
+        });
+
+        document.getElementById('result').innerHTML = '';
+        document.getElementById('distance').value = '';
+        document.getElementById('fuel').value = '';
+      }, 300);
+    }
+
+    function openPopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'flex';
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'none';
+    }
+  </script>
+</body>
+</html>

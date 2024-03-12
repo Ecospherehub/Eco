@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>India Map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    #map {
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const indiaBounds = [
+      [35.6745, 68.1097], // Southwest coordinates
+      [6.4627, 97.3956]   // Northeast coordinates
+    ];
+
+    const map = L.map('map', {
+      center: [20.5937, 78.9629],
+      zoom: 5,
+      maxBounds: indiaBounds,
+      maxBoundsViscosity: 1.0,
+      minZoom: 5,
+      zoomControl: false
+    });
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    map.on('click', onMapClick);
+
+    function onMapClick(e) {
+      const popupContent = `
+        <b>Environmental Information</b><br>
+        Location: ${e.latlng.lat.toFixed(4)}, ${e.latlng.lng.toFixed(4)}<br>
+        Environmental Condition: Good<br>
+        Local Impact: Low<br>
+        Other Information: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      `;
+
+      const marker = L.marker(e.latlng).addTo(map);
+      marker.bindPopup(popupContent).openPopup();
+    }
+  </script>
+</body>
+</html>

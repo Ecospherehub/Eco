@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quizzes and Games</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #333;
+            padding: 0.5em;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            margin: 5px;
+        }
+
+        section {
+            padding: 1em;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .game-container-wrapper {
+            display: flex;
+            justify-content: space-evenly;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .game-container {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .game-container:hover {
+            transform: scale(1.05);
+        }
+
+        .game-info {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .game-container:hover .game-info {
+            display: block;
+        }
+
+        .difficulty-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            z-index: 1000;
+        }
+
+        .difficulty-popup label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .custom-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .custom-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            padding: 12px;
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .custom-dropdown:hover .custom-dropdown-content {
+            display: block;
+        }
+
+        .custom-dropdown-option {
+            cursor: pointer;
+            padding: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .custom-dropdown-option:hover {
+            background-color: #ddd;
+        }
+
+        .difficulty-popup button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Quizzes and Games</h1>
+    </header>
+
+    <nav>
+        <a href="#quizzes">Quizzes</a>
+        <a href="#puzzles">Puzzles</a>
+        <a href="#matchups">Matchups</a>
+        <a href="#image-guessing">Image Guessing</a>
+        <!-- Add more game types as needed -->
+    </nav>
+
+    <div class="game-container-wrapper">
+        <section id="quizzes">
+            <div class="game-container" onclick="showDifficultyPopup('Quiz')">
+                <h2>Quiz</h2>
+                <div class="game-info">
+                    <p>This is a quiz game. Test your knowledge and have fun!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="puzzles">
+            <div class="game-container" onclick="showDifficultyPopup('Puzzle')">
+                <h2>Puzzle</h2>
+                <div class="game-info">
+                    <p>Enjoy solving puzzles? This game is for you. Challenge yourself with various puzzles.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="matchups">
+            <div class="game-container" onclick="showDifficultyPopup('Matchup')">
+                <h2>Matchup</h2>
+                <div class="game-info">
+                    <p>Match and pair elements in this exciting matchup game. Test your memory and have a great time!</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="image-guessing">
+            <div class="game-container" onclick="showDifficultyPopup('Image Guessing')">
+                <h2>Image Guessing</h2>
+                <div class="game-info">
+                    <p>Guess what's in the image! Test your visual recognition skills with this entertaining game.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Add more sections for other game types -->
+    </div>
+
+    <div class="difficulty-popup" id="difficultyPopup">
+        <span class="close-btn" onclick="closeDifficultyPopup()">&#10006;</span>
+        <label for="difficulty">Select Difficulty:</label>
+        <div class="custom-dropdown">
+            <div class="custom-dropdown-content">
+                <div class="custom-dropdown-option" onclick="selectDifficulty('beginner')">Beginner</div>
+                <div class="custom-dropdown-option" onclick="selectDifficulty('moderate')">Moderate</div>
+                <div class="custom-dropdown-option" onclick="selectDifficulty('hard')">Hard</div>
+            </div>
+        </div>
+        <button onclick="startGame()">Start Game</button>
+    </div>
+
+    <footer>
+        &copy; 2024 Quizzes and Games. All rights reserved.
+    </footer>
+
+    <script>
+        function showDifficultyPopup(gameType) {
+            const difficultyPopup = document.getElementById('difficultyPopup');
+            difficultyPopup.style.display = 'block';
+        }
+
+        function startGame() {
+            // Add logic to start the selected game with the chosen difficulty
+            alert('Game started!');
+            closeDifficultyPopup();
+        }
+
+        function closeDifficultyPopup() {
+            const difficultyPopup = document.getElementById('difficultyPopup');
+            difficultyPopup.style.display = 'none';
+        }
+
+        function selectDifficulty(difficulty) {
+            // Add logic to handle the selected difficulty
+            alert('Difficulty selected: ' + difficulty);
+        }
+    </script>
+</body>
+
+</html>

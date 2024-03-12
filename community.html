@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphereHub Community Joining Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color:lightgray;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Popup styles */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        input:hover{
+            color:red;
+            transform :scale(1.2);
+        }
+        #timer {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Welcome to EcoSphereHub Community</h1>
+    <form id="joinForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="mobile">Mobile Number:</label>
+        <input type="tel" id="mobile" pattern="[0-9]{10}" placeholder="Enter 10-digit number" required>
+
+        <label for="state">State:</label>
+        <input type="text" id="state" required>
+
+        <label for="nationality">Nationality:</label>
+        <input type="text" id="nationality" required>
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" required>
+
+        <label for="gender">Gender:</label>
+        <select id="gender" required>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <button type="button" onclick="submitForm()">Join Community</button>
+    </form>
+</div>
+
+<!-- Popup for successful submission -->
+<div class="overlay" id="successPopup">
+    <div class="popup">
+        <p>Thank you for your interest in joining EcoSphereHub Community! We will be in touch shortly.</p>
+        <button onclick="redirectToHome()">OK</button>
+        <div id="timer">You will be directed to the home page in <span id="countdown">7</span> seconds <span>&#9203;</span></div>
+    </div>
+</div>
+
+<script>
+    function submitForm() {
+        // Assume validation is successful
+        // You can add more validation as needed
+
+        // Display the success popup
+        document.getElementById('successPopup').style.display = 'flex';
+
+        // Start countdown
+        startCountdown(7);
+    }
+
+    function redirectToHome() {
+        // Redirect to home.html when the OK button is clicked
+        window.location.href = 'home.html';
+    }
+
+    function startCountdown(seconds) {
+        var countdownElement = document.getElementById('countdown');
+
+        var countdownInterval = setInterval(function() {
+            seconds--;
+
+            if (seconds <= 0) {
+                clearInterval(countdownInterval);
+                // Optionally, you can add additional actions when the countdown reaches 0.
+                redirectToHome();
+            }
+
+            countdownElement.textContent = seconds;
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>

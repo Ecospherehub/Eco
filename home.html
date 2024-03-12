@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphereHub</title>
+    <link rel="icon" type="image/png/jpg" href="logo1.jpg">
+    <style>
+       
+body{
+    color:white;
+    background-image: url('https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+header {
+    background-color: transparent;
+    color: skyblue;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-content {
+font-size: 50px;
+    display: inline-flex; /* Use inline-flex to prevent line break */
+    align-items: center;
+    color:white;
+}
+
+.header-content img {
+    vertical-align: middle;
+    border-radius: 50%; /* Ensure the image is circular */
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    margin-right: 10px; /* Add some spacing between image and text */
+}
+
+header h1 {
+    margin: 0; /* Reset margin */
+    padding: 0;
+}
+
+header h6 { 
+    
+    margin: -20px;; /* Reset margin */
+    padding-bottom: 20px;
+    padding-left: 100px;
+    padding-top:-10px;
+}
+
+
+
+
+
+@keyframes blink-caret {
+    from,
+    to {
+        border-color: transparent;
+    }
+    50% {
+        border-color: white;
+    }
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    background-color: transparent;
+    padding: 0.5em;
+    flex-wrap: wrap;
+    position: relative;
+    color:white;
+    z-index: 1;
+}
+
+nav a {
+    color:rgb(21, 167, 225);
+    text-decoration: none;
+    padding: 0.5em 1em;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s;
+    font-size: 14pt;
+}
+
+nav a:hover {
+    transform: scale(1.1);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+}
+
+section {
+    padding: 1em;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1em;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Add 3D button effect */
+.btn-3d {
+    position: relative;
+    padding: 10px 20px;
+    font-size: 16px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: 0.3s;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-3d:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.btn-3d:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: 0.3s;
+}
+
+.btn-3d:hover:before {
+    left: 100%;
+}
+
+/* Background video styles */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+iframe {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* Make sure the content is on top of the video */
+header,
+nav,
+section,
+footer {
+    position: relative;
+    z-index: 2;
+}
+
+.logo{
+    text-align: center;
+
+}
+body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            animation: changeBackground 70s infinite linear;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+      
+       
+        h1,h6{
+            margin:1px;
+            
+        }
+        img{
+            border-radius:150px;
+            height:20px;
+            width:20px;
+        }
+        img:hover{
+            transform: scale(1.2);
+            color:chocolate;
+        }
+        .puri{
+    
+            display: flex;
+            justify-content: space-evenly;
+        
+
+        }
+        .puri :hover{
+            transform: scale(1.2);
+            color:white; 
+        }
+       /* Welcome Content */
+#welcome {
+    color: wheat;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+#welcome p {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(155, 132, 130);
+    display: inline;
+    
+}
+
+.word-animation {
+    display: inline-block;
+    opacity: 0; /* Initially hide all words */
+    animation: word-by-word 5s linear infinite;
+}
+
+@keyframes word-by-word {
+    0% {
+        opacity: 0; /* Start with opacity 0 */
+    }
+    20% {
+        opacity: 1; /* Show first word */
+    }
+    100% {
+        opacity: 1; /* Keep showing all words */
+    }
+}
+
+        #discover{
+            color:white;
+            font-size: 20px;
+            font-weight: 300;
+            overflow: hidden;
+            display: inline-block;
+        }
+       .why{
+        color:wheat;
+       }
+        
+        #choose{
+            color:white;
+            font-size: 20px;
+            font-weight: 300;
+        }
+         .feature{
+        
+            color:wheat;
+            font-weight: 200;
+            text-decoration: underline;
+        }
+        .weather-container{
+            position: relative;
+            top:100px;
+            float:right;
+            margin-right: 20px;
+            border:1px transparent;
+            justify-content: center;
+            padding:25px;
+            color:skyblue;
+                }
+      #weather-icon{
+        float:right;
+    height:100px;
+    width:100px;
+      }
+      
+       
+        /* Header Styles */
+        header {
+            background-color: transparent;
+            color: skyblue;
+            text-align: center;
+            padding: 1em;
+            position: relative;
+            overflow: hidden;
+        }
+
+       
+
+
+        header h1 {
+            margin: 0;
+            padding: 0;
+        }
+
+
+       
+
+        nav a {
+            font-size: 1.5vw; /* Responsive font size */
+            margin: 1vw;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 2vw;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2vw;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Button Styles */
+        .btn-3d {
+            font-size: 2vw; /* Responsive font size */
+            padding: 1vw 2vw; /* Responsive padding */
+        }
+
+        /* Weather Container Styles */
+        .weather-container {
+            position: relative;
+            top: 5vw; /* Adjust as needed */
+            float: right;
+            margin-right: 2vw;
+            border: 0.5vw solid rgb(18, 18, 18);
+            justify-content: center;
+            padding: 2vw;
+        }
+        .what{
+            color:wheat;
+            font-size: 30px;
+        }
+        .grow{
+            color:wheat;
+            font-size: 30px;   
+        }
+        .make{
+            color:wheat;
+            font-size: 30px;   
+        }
+        blockquote{
+            color: rgb(155, 132, 130);
+        }
+
+       .grows{
+        color: rgb(155, 132, 130);
+       }
+        .makes{
+            color: rgb(155, 132, 130);
+        }
+        .join{
+            color:wheat;
+            font-size: 30px;
+        }
+        
+    </style>
+</head>
+
+<body>
+   
+    
+
+    <header>
+<div class="header-content">
+        <img class= "main"src="logo1.jpg" alt="Logo">
+        <h1> EcoSphereHub</h1>
+
+    </div>
+    <h6>RIDE | RESTORE | REVIVE!</h6>
+    </header>
+
+    <nav>
+        <a href="carbon.html">Carbon Calculator</a>
+        <a href="#innovation">Green Innovation Showcase</a>
+        <a href="#tours">Virtual Eco-Tours</a>
+        <a href="#reviews">Eco-Friendly Product Reviews</a>
+        <a href="#jobs">Green Jobs Directory</a>
+        <a href="games.html">Educational Games and Quizzes</a>
+        <a href="diy-projects.html">DIY Sustainability Projects</a>
+        <a href="map.html">Local Environmental Impact Maps</a>
+        <a href="#recipes">Eco-Friendly Recipes</a>
+        <a href="#challenges">Monthly Eco Challenges</a>
+        <!-- User Profile Link -->
+        <a href="profile.html" onclick="showUserProfile()">User Profile</a>
+    </nav>
+    <div class="weather-container">
+        <h1 id="location-name">Loading...</h1>
+        <p id="current-time">Time: </p>
+        <p id="day">Day: </p>
+        <p id="temperature">Temperature: </p>
+        <img id="weather-icon" alt="Weather Icon">
+        <p id="weather-description">Weather: </p>
+       
+        <p id="pressure">Pressure: </p>
+        <p id="humidity">Humidity: </p>
+        <p id="dewpoint">Dewpoint: </p>
+        <p id="visibility">Visibility: </p>
+        
+    </div>
+    <!-- Welcome Content -->
+    <section id="welcome">
+        <h1 color=>Welcome to EcoSphereHub: Your Gateway to a Greener World!</h1><br>
+        <p>At EcoSphereHub, we believe in the power of individual actions to collectively shape a sustainable future.
+            Welcome to our digital haven, where eco-conscious living meets cutting-edge technology. Explore, learn, and
+            embark on a journey towards a greener tomorrow.<br><br>
+            Here, you'll find a wealth of resources to empower your journey towards a greener tomorrow. From insightful articles and interactive workshops to eco-friendly product recommendations and community forums, EcoSphereHub is your one-stop destination for all things sustainable.
+        <br><br>
+        Join us as we harness the power of technology to drive positive change. Let's inspire each other, share our knowledge, and take meaningful action towards building a more environmentally conscious world. Together, we can make a difference—one eco-friendly choice at a time. Welcome to EcoSphereHub, your gateway to a brighter, more sustainable future.</p>
+    </section>
+
+    <!-- Discover Features Content -->
+    <section id="discover">
+        <h1 >Discover Exciting Features</h1>
+        <ul>
+            <li><strong class="feature">Calculate Your Carbon Footprint:<br></strong> Understand your environmental impact with our user-friendly
+                calculator. Take the first step towards reducing your carbon footprint.</li>
+            <li><strong class ="feature">Explore Green Innovations:<br></strong> Dive into the world of groundbreaking technologies and
+                innovations that are reshaping the future of sustainability.</li>
+            <li><strong class ="feature">Embark on Virtual Eco-Tours:<br></strong> Immerse yourself in virtual experiences that showcase
+                eco-friendly destinations and sustainable practices from around the globe.</li>
+            <li><strong class="feature">Make Informed Choices with Product Reviews:<br></strong> Find and support eco-friendly products that
+                align with your values. Make informed decisions for a more sustainable lifestyle.</li>
+            <li><strong class="feature">Find Eco-Conscious Career Paths:<br></strong> Connect with environmentally conscious job opportunities
+                and carve a career path that aligns with your passion for the planet.</li>
+            <li><strong class="feature">Engage in Educational Games:<br></strong> Learning about environmental issues has never been this fun!
+                Our interactive games make education entertaining for users of all ages.</li>
+            <li><strong class="feature">Create DIY Sustainability Projects:<br></strong> Unleash your creativity with step-by-step guides for
+                eco-friendly do-it-yourself projects. From homemade cleaning products to small-scale renewable energy
+                solutions, discover the joy of sustainable living.</li>
+            <li><strong class="feature">Understand Local Environmental Impact:<br></strong> Explore interactive maps illustrating the
+                environmental impact of different areas. Gain insights into regional sustainability efforts and
+                challenges.</li>
+            <li><strong class="feature">Cook with Eco-Friendly Recipes:<br></strong> Transform your kitchen into a hub of sustainability with
+                our collection of recipes focused on plant-based, locally sourced ingredients.</li>
+            <li><strong class="feature">Join Monthly Eco Challenges:<br></strong> Embrace new eco-friendly habits every month. Be part of a
+                community committed to positive change.</li>
+        </ul>
+    </section>
+
+    <!-- Why Choose EcoSphereHub Content -->
+    <section id="choose">
+        <h2 class="why">Why Choose EcoSphereHub?</h2>
+        <ul>
+            <li><strong>Cutting-Edge Technology:<br></strong> Experience the intersection of sustainability and technology,
+                making eco-conscious living accessible and enjoyable.</li>
+            <li><strong>Immersive Virtual Experiences:<br></strong> Take virtual journeys to eco-friendly destinations,
+                fostering a deeper connection with the environment.</li>
+            <li><strong>User-Friendly Interfaces:<br></strong> Our platform is designed with you in mind – intuitive,
+                engaging, and ready to empower your green journey.</li>
+            <li><strong>Real-World Impact:<br></strong> Through challenges, education, and community support, EcoSphereHub
+                contributes to a positive environmental impact.</li>
+                <li><strong>Carbon Footprint Calculator:</strong>This is a tool or application that helps individuals or organizations estimate the amount of greenhouse gases (such as carbon dioxide) emitted directly or indirectly through various activities. </li>
+      <li><strong>Interactive Quizzes: </strong>These are quizzes presented in an interactive format, often found online or in educational materials. Unlike traditional pen-and-paper quizzes, interactive quizzes allow users to engage with the content in various ways, such as clicking on options, dragging and dropping items, or typing in responses. </li>
+    <li><strong>Temperature Calculator:</strong> A temperature calculator is a tool that allows users to convert temperatures between different units of measurement, such as Celsius, Fahrenheit, and Kelvin.</li>    
+    </ul>
+    </section>
+
+    <!-- Make a Positive Impact Content -->
+   
+
+    <!-- User Testimonials Content -->
+    <section>
+        <h1 class="what">What Our Users Say ?</h1>
+        <blockquote>
+            <p>🌱 User Experience Reinvented: By incorporating interactive features and challenges, EcoSphereHub has created an environment where learning about sustainability feels fun and rewarding. This approach not only enhances user experience but also fosters a sense of personal investment and accountability in taking sustainable actions.</p>
+        </blockquote>
+        <blockquote>
+            <p>🌍 Innovation Meets Sustainability: As an environmental consultant, James recognizes the value of innovative solutions and approaches in promoting eco-conscious living. EcoSphereHub's commitment to leveraging technology and fostering collaboration aligns with the needs and expectations of professionals like James who are dedicated to advancing sustainability goals.</p>
+        </blockquote>
+        <blockquote>
+            <p> 🌿 Empowering Change, One User at a Time: EcoSphereHub isn't just a platform; it's a catalyst for positive environmental change. Our users are at the heart of everything we do, and their testimonials speak volumes about the impact of our collective efforts. Join us on this journey towards a greener, more sustainable future.</p>
+        </blockquote>
+        <p align="center">"As a professional in the sustainability field, I appreciate the innovative approach EcoSphereHub takes in promoting eco-conscious living."</p>
+    </section>
+
+    <!-- Growing Together Content -->
+    <section>
+        <h1 class="grow">Growing Together</h1>
+        <p class="grows">
+            EcoSphereHub isn't just your typical platform—it's a vibrant and dynamic community dedicated to environmental stewardship and sustainability. At EcoSphereHub, we believe that together, we can achieve far more than we could individually. That's why we've created a space where like-minded individuals and organizations come together to collaborate, support one another, and drive positive change for our planet.
+            
+            One of the key pillars of EcoSphereHub is collaboration. We actively partner with environmental organizations, both large and small, to amplify our collective impact. By working together, we can share resources, expertise, and ideas, ultimately making our efforts more effective and far-reaching.<br>
+            Additionally, EcoSphereHub is deeply committed to supporting local initiatives. We understand the importance of grassroots efforts in creating meaningful change within communities. That's why we provide a platform for individuals and small groups to showcase their projects, connect with supporters, and access the resources they need to succeed.</p>
+    </section>
+    <section> 
+        <h1 class="join"> Join Eco-Challenges</h1>
+        <p class="Joins">Welcome to EcoChallenges, your daily journey towards a greener and more sustainable lifestyle! At EcoChallenges, we believe that small actions can lead to significant impacts, and we invite you to join us on a daily adventure dedicated to environmental protection and sustainability.
+            
+        </p>
+    </section>
+    <section>
+        <h1 class="make">Make a Positive Impact</h1>
+        <p class="makes">Joining the movement for a sustainable and eco-friendly world is more than just an individual choice—it's a collective commitment to making a positive impact on the planet. At EcoSphereHub, we recognize the power of collective action and the importance of each individual's contribution.
+
+            Your actions matter. Whether it's reducing your carbon footprint, supporting local initiatives, advocating for environmental policies, or making more conscious consumer choices, every action you take has the potential to create meaningful change.<br>
+            By signing up with EcoSphereHub, you're not only joining a community of like-minded individuals who share your passion for sustainability, but you're also committing to taking tangible steps towards a greener future. Together, we can leverage our collective strength to make strides towards sustainability in our daily lives, our communities, and beyond.
+
+            But the impact doesn't stop there. By becoming part of the green movement, you're also inspiring others to take action and fostering a culture of environmental awareness and responsibility. Your involvement sends a powerful message that sustainability matters and that together, we have the power to shape a better world for future generations.</p>
+        <div class="puri">
+            <a href="#" >Sign Up Now</a>   |   <a href="#">Explore Features</a>   |   <a href="community.html" >Join the Community</a>
+        </div>
+            
+    </section>
+
+    <!-- Social Media Links -->
+    <section class="logo">
+        <p><strong>Follow us on </strong>
+            <a href="https://www.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png "width="20px"height="20px"  alt="Facebook Logo"></a> |
+            <a href="https://www.twitter.com/"><img src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg" width="20px"height="20px" alt="Twitter Logo"></a> |
+            <a href="https://www.instagram.com/"><img src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" width="20px"height="20px" alt ="Instagram Logo"></a>
+    </section>
+
+    <!-- ... (Remaining HTML code) -->
+
+    <script>
+        function showUserProfile() {
+            const userProfile = document.getElementById('userProfile');
+            userProfile.style.display = 'block';
+
+            // Simulated user details (replace with actual user details)
+            const user = {
+                name: "John Doe",
+                email: "john@example.com",
+                phone: "+1234567890",
+                age: 30
+            };
+
+            // Store user details in local storage
+            localStorage.setItem('user', JSON.stringify(user));
+
+            // Populate user details in the profile section
+            document.getElementById('userImage').src = "default_profile.jpg"; // Replace with the actual image source
+            document.getElementById('userName').textContent = user.name;
+            document.getElementById('userEmail').textContent = "Email: " + user.email;
+            document.getElementById('userPhone').textContent = "Phone: " + user.phone;
+            document.getElementById('userAge').textContent = "Age: " + user.age;
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const locationNameElement = document.getElementById('location-name');
+            const currentTimeElement = document.getElementById('current-time');
+            const dayElement = document.getElementById('day');
+            const temperatureElement = document.getElementById('temperature');
+            const weatherDescriptionElement = document.getElementById('weather-description');
+            const pressureElement = document.getElementById('pressure');
+            const humidityElement = document.getElementById('humidity');
+            const dewpointElement = document.getElementById('dewpoint');
+            const visibilityElement = document.getElementById('visibility');
+            const weatherIconElement = document.getElementById('weather-icon');
+
+            function askForLocationPermission() {
+                return new Promise((resolve, reject) => {
+                    navigator.permissions.query({ name: 'geolocation' }).then(permissionStatus => {
+                        if (permissionStatus.state === 'granted') {
+                            resolve();
+                        } else if (permissionStatus.state === 'prompt') {
+                            navigator.geolocation.getCurrentPosition(
+                                position => {
+                                    resolve();
+                                },
+                                error => {
+                                    reject(`Error getting location: ${error.message}`);
+                                }
+                            );
+                        } else {
+                            reject('Location permission denied');
+                        }
+                    });
+                });
+            }
+
+            async function fetchWeatherData() {
+                try {
+                    await askForLocationPermission();
+
+                    const { latitude, longitude } = await getCurrentPosition();
+                    const apiKey = 'f8102c3d607f6c1faca1debc59a9ee69';
+
+                    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`);
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        const weatherIcon = data.weather[0].icon;
+                        const isDay = weatherIcon.endsWith('d');
+                        weatherIconElement.src = `http://openweathermap.org/img/wn/${weatherIcon}.png`;
+
+                        const locationName = data.name;
+                        const temperature = (data.main.temp - 273.15).toFixed(2);
+                        const weatherDescription = data.weather[0].description;
+
+                        locationNameElement.textContent = `Location: ${locationName}`;
+                        temperatureElement.textContent = `Temperature: ${temperature}°C`;
+                        weatherDescriptionElement.textContent = `Weather: ${weatherDescription}`;
+
+                        const currentTime = new Date();
+                        const day = currentTime.toLocaleDateString('en-US', { weekday: 'long' });
+                        const pressure = data.main.pressure;
+                        const humidity = data.main.humidity;
+                        const dewpoint = calculateDewpoint(data.main.temp, humidity);
+                        const visibility = (data.visibility / 1000).toFixed(2);
+
+                        currentTimeElement.textContent = `Time: ${formatTime12Hrs(currentTime)}`;
+                        dayElement.textContent = `Day: ${day}`;
+                        pressureElement.textContent = `Pressure: ${pressure} hPa`;
+                        humidityElement.textContent = `Humidity: ${humidity}%`;
+                        dewpointElement.textContent = `Dewpoint: ${dewpoint.toFixed(0) - 232}°C`;
+                        visibilityElement.textContent = `Visibility: ${visibility} km`;
+                    } else {
+                        console.error(`Failed to fetch weather data. Status: ${response.status}`);
+                    }
+                } catch (error) {
+                    console.error('Error fetching weather data:', error);
+                }
+            }
+
+            function getCurrentPosition() {
+                return new Promise((resolve, reject) => {
+                    navigator.geolocation.getCurrentPosition(
+                        position => {
+                            const { latitude, longitude } = position.coords;
+                            resolve({ latitude, longitude });
+                        },
+                        error => {
+                            reject(`Error getting location: ${error.message}`);
+                        }
+                    );
+                });
+            }
+
+            function calculateDewpoint(temperature, humidity) {
+                const a = 17.27;
+                const b = 237.7;
+                const alpha = ((a * temperature) / (b + temperature)) + Math.log(humidity / 100);
+                return (b * alpha) / (a - alpha);
+            }
+
+            function formatTime12Hrs(date) {
+                const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+                return new Intl.DateTimeFormat('en-US', options).format(date);
+            }
+
+            fetchWeatherData();
+        });
+
+    </script>
+<!-- Code injected by live-server -->
+ 
+</body>
+
+</html>
