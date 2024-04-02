@@ -399,6 +399,7 @@ body::before {
         <!-- User Profile Link -->
         <a href="profile.html" onclick="showUserProfile()">User Profile</a>
     </nav>
+     <div id="welcome-message"></div>
     <div class="weather-container">
         <h1 id="location-name">Loading...</h1>
         <p id="current-time">Time: </p>
@@ -656,6 +657,16 @@ body::before {
 
             fetchWeatherData();
         });
+        
+const userName = localStorage.getItem('userName');
+
+// Display a welcome message on the home page
+if (userName) {
+    const welcomeMessage = document.createElement("div");
+    welcomeMessage.id = "welcome-message";
+    welcomeMessage.innerText = `Welcome, ${userName}! .`;
+    document.getElementById("welcome-message").insertAdjacentElement('afterbegin', welcomeMessage);
+}
 
     </script>
 <!-- Code injected by live-server -->
