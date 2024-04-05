@@ -34,20 +34,19 @@ function loginUser() {
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
-
     if (!username.trim() || !password.trim()) {
         showPopup('Please enter valid username and password.', '❌');
         return false; 
     }
 
-    const registeredData = JSON.parse(localStorage.getItem('registeredData')) ||    
-    [];
+    const registeredData = JSON.parse(localStorage.getItem('registeredData')) || [];
 
-    const user = registeredData.find(entry => entry.username === username && 
-    entry.password === password);
+    const user = registeredData.find(entry => entry.username === username && entry.password === password);
 
     if (user) {
         showPopup('Login successful!', '✅');
+        // Set the current user in local storage
+        localStorage.setItem('currentUser', JSON.stringify(user));
         setTimeout(() => {
             window.location.href = 'home.html';
         }, 3000);
@@ -59,9 +58,8 @@ function loginUser() {
 }
 
 
-
-
 function registerUser() {
+
     const name = document.getElementById('name').value;
     const mobile = document.getElementById('mobile').value;
     const email = document.getElementById('email').value;
@@ -94,6 +92,13 @@ function registerUser() {
         showPopup('Username is already taken. Please choose a different one.', '❌');
         return;
     }
+
+    // Check if email is verified
+    if (email !== verifiedEmail) {
+        showPopup('Please verify your email before successful registration.', '❌');
+        return;
+    }
+    localStorage.removeItem('tempUserDetails');
 
     const newUser = {
         name,
@@ -158,4 +163,43 @@ function validatePassword() {
 function togglePasswordVisibility(passwordFieldId) {
     const passwordField = document.getElementById(passwordFieldId);
     passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
+}
+
+let verifiedEmail = ""; // Variable to store the verified email address
+
+function SendOTP() {
+    const email = document.getElementById("email");
+    const otpverify = document.getElementsByClassName("email-verify")[0];
+
+    let otp_code = Math.floor(Math.random() * 1000000);
+    let emailbody = `<h1>Greetings from Ecospherehub. Your OTP is:</h1>${otp_code}<h2>Thanks for choosing us</h2><h2>Team Ecospherehub <br> support : ecospherehub@gmail.com</h2>`;
+
+    Email.send({
+        SecureToken: "91a228f6-639f-48fd-9083-f7c28af0b798",
+        To: email.value,
+        From: "ecospherehub@gmail.com",
+        Subject: "OTP FOR ECOSPHEREHUB REGISTRATION",
+        Body: emailbody,
+    }).then(message => {
+        if (message === "OK") {
+            alert("OTP sent to your email " + email.value);
+
+            otpverify.style.display = "flex";
+            let otp_inp = document.getElementById("otp-input");
+            let otp_btn = document.getElementById("btn-verify-otp");
+
+            otp_btn.addEventListener("click", () => {
+                if (otp_inp.value == otp_code) {
+                    alert("Email address verified...");
+                    otpverify.style.display = "none";
+                    verifiedEmail = email.value; // Store the verified email address
+                    email.value = verifiedEmail; // Reassign the email value
+                    otp_inp.value = "";
+
+                } else {
+                    alert("Invalid OTP");
+                }
+            });
+        }
+    });
 }
