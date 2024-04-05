@@ -1,0 +1,98 @@
+body {
+    background-color: lightsteelblue;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.aayush {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+input:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background-color: orangered;
+}
+
+a:hover {
+    transform: scale(1.1);
+    color: red;
+}
+
+h2 {
+    text-align: center;
+}
+
+.container {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    bottom: 80px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input,
+button {
+    margin-top: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #4caf50;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+p {
+    margin-top: 10px;
+}
