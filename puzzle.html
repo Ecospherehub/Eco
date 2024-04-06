@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSphereHub-Puzzles</title>
+    <link rel="stylesheet" href="puzzle.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>Ecospherehub-Puzzle</header>
+    <div id="container">	
+        <a href="#" class="button start">Start</a>
+        <div class="box">	
+            <div class="me full"></div>
+        </div>
+        <div class="pre_img">	
+            <li data-bid="0"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyL9IJ9KAejjYg28I5fSzi006FQ8qcMdWUAQ&usqp=CAU"></li>
+            <li data-bid="1"><img src="https://static.vecteezy.com/system/resources/previews/032/242/170/large_2x/beautiful-waterfall-flowers-water-nature-waterfall-hd-wallpaper-ai-generated-free-photo.jpg"></li>
+            <li data-bid="2"><img src="https://m.media-amazon.com/images/I/81FFpRhqUVL._AC_UF1000,1000_QL80_.jpg"></li>	
+            <li data-bid="3"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLIm5I0MywAlV33xfCkykUJesumEwdsADy6g&usqp=CAU"></li>	
+            <li data-bid="4"><img src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></li>	
+            <li data-bid="5"><img src="https://images.unsplash.com/photo-1475809913362-28a064062ccd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFuaW1hbHxlbnwwfHwwfHx8MA%3D%3D"></li>	
+            <li data-bid="6"><img src="https://plus.unsplash.com/premium_photo-1668675744027-84e3618e9970?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></li>	
+            <li data-bid="7"><img src="https://images.unsplash.com/photo-1558954350-2bc4ea82347f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></li>	
+            <li data-bid="8"><img src="https://images.unsplash.com/photo-1566487097168-e91a4f38bee2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></li>	
+            <li data-bid="9"><img src="https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"></li>	
+            <li data-bid="10" id="upfile1"><img src="https://image.ibb.co/cXSomR/upload1.png"/></li>
+            <input type="file" name="image" id="file1" style="display: none">
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div align="center"><a href="#" class="button reset" align="center">Reset</a></div>
+    </div>
+    
+    <div class="cover" >
+        <div class="score">
+            <p id="scr_head"> &#9875 Puzzel Solved &#9875</p>
+            <p id="scr_time"> Time : <span id="min">00</span> Min <span id="sec">00</span> Sec</p>
+            <p id="scr_moves"> Moves : <span id="moves"></span></p>
+            <p class="i">info.kaushal@yahoo.com</p>
+            <div class="button OK">OK</div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+
+
+var box = $(".box"),
+    orginal = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17],
+    temp = orginal,
+    x = [],
+    sec = 0,
+    date1,date2,
+    moves = 0,
+    mm = 0,
+    ss = 0,
+    upIMG,
+    images = ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRyL9IJ9KAejjYg28I5fSzi006FQ8qcMdWUAQ&usqp=CAU","https://static.vecteezy.com/system/resources/previews/032/242/170/large_2x/beautiful-waterfall-flowers-water-nature-waterfall-hd-wallpaper-ai-generated-free-photo.jpg","https://m.media-amazon.com/images/I/81FFpRhqUVL._AC_UF1000,1000_QL80_.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLIm5I0MywAlV33xfCkykUJesumEwdsADy6g&usqp=CAU","https://images.unsplash.com/photo-1474511320723-9a56873867b5?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://images.unsplash.com/photo-1475809913362-28a064062ccd?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://plus.unsplash.com/premium_photo-1668675744027-84e3618e9970?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://images.unsplash.com/photo-1558954350-2bc4ea82347f?q=80&w=2015&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://images.unsplash.com/photo-1566487097168-e91a4f38bee2?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"]
+    img = 0;
+
+
+
+
+$('.me').css({"background-image" : 'url('+images[0]+')'});
+
+$(".start").click(function() {
+    $(".start").addClass('prevent_click');
+    $(".start").delay(100).slideUp(500);
+    $(".full").hide();
+    $(".pre_img").addClass("prevent_click");
+    
+    date1 = new Date();
+    
+        Start();
+        return 0;
+});
+
+function Start() {
+    randomTile();
+    changeBG(img);
+    var count = 0,
+        a,
+        b,
+        A,
+        B;
+    $(".me").click(function() {
+        count++;
+        if (count == 1) {
+            a = $(this).attr("data-bid");
+            $('.me_'+a).css({"opacity": ".65"});
+        } else {
+            b = $(this).attr("data-bid");	
+            $('.me_'+a).css({"opacity": "1"});
+            if (a == b) {
+            } else {
+                $(".me_" + a)
+                    .addClass("me_" + b)
+                    .removeClass("me_" + a);
+                $(this)
+                    .addClass("me_" + a)
+                    .removeClass("me_" + b);
+                $(".me_" + a).attr("data-bid", a);
+                $(".me_" + b).attr("data-bid", b);
+            }
+            moves++;
+            swapping(a, b);
+            checkCorrect(a);
+            checkCorrect(b);
+            a = b = count = A = B = 0;
+        }
+        if (arraysEqual(x)) { 
+            date2 = new Date();
+            timeDifferece();
+            showScore();
+            return 0;
+        }
+    });
+    return 0;
+}
+
+function randomTile() {
+    var i;
+    for (i = orginal.length-1; i >= 0; i--) {
+        var flag = getRandom(0, i);
+        x[i] = temp[flag];
+        temp[flag] = temp[i];
+        temp[i] = x[i];
+    }
+    for (i = 0; i < orginal.length; i++) {
+        box.append(
+            '<div  class="me me_' + x[i] + ' tile" data-bid="' + x[i] + '"></div>'
+        );
+        if ((i + 1) % 6 == 0) box.append("<br>");
+    }
+    i = 17;
+    return 0;
+}
+
+function arraysEqual(arr) {
+    var i;
+    for (i = orginal.length - 1; i >= 0; i--) {
+        if (arr[i] != i) return false;
+    }
+    return true;
+}
+
+function checkCorrect(N1) {
+    var pos = x.indexOf(parseInt(N1, 10));
+    if (pos != N1) {
+        return;
+    }
+    $(".me_" + N1).addClass("correct , prevent_click ");
+    return;
+}
+
+function swapping(N1, N2) {
+    var first = x.indexOf(parseInt(N1, 10)),
+        second = x.indexOf(parseInt(N2, 10));
+    x[first] = parseInt(N2, 10);
+    x[second] = parseInt(N1, 10);
+    return 0;
+}
+
+function getRandom(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+function timeDifferece(){
+    var diff = date2 - date1;
+    var msec = diff;
+    var hh = Math.floor(msec / 1000 / 60 / 60);
+    msec -= hh * 1000 * 60 * 60;
+     mm = Math.floor(msec / 1000 / 60); // Gives Minute
+    msec -= mm * 1000 * 60;
+    ss = Math.floor(msec / 1000);		// Gives Second
+    msec -= ss * 1000;
+    return 0;
+}
+
+
+function changeBG(img){	
+    if(img != 10){
+    $('.me').css({
+        "background-image" : "url("+images[img]+")"
+    });
+    return
+    }
+    else
+        $('.me').css({"background-image" : "url("+upIMG+")"});
+}
+
+$('.pre_img li').hover(function(){
+        img = $(this).attr("data-bid");
+        changeBG(img);
+
+    });
+
+function showScore(){
+    $('#min').html(mm);
+    $('#sec').html(ss);
+    $('#moves').html(moves);
+    setTimeout(function(){
+    $('.cover').slideDown(350);
+    },1050);
+    return 0;
+}
+
+$('.OK').click(function(){
+    $('.cover').slideUp(350);
+});
+
+$('.reset').click(function(){
+    $(".tile").remove();
+    $("br").remove();
+    $(".full").show();
+    $(".start").show();
+    $(".pre_img, .start").removeClass("prevent_click");
+    
+    temp = orginal;
+    x = [];
+    moves =  ss = mm = 0;
+    return 0;
+});
+
+$("#upfile1").click(function () {
+    $("#file1").trigger('click');
+});
+
+$("#file1").change(function(){
+    readURL(this);
+});
+
+ function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        
+        reader.onload = function (e) {
+           upIMG =  e.target.result;
+           img = 10;
+           changeBG(10);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+
+}
+
+});
+    </script>
+</body>
+</html>
