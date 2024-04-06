@@ -387,19 +387,20 @@ body::before {
 
     <nav>
         <a href="carbon.html">Carbon Calculator</a>
-        <a href="#innovation">Green Innovation Showcase</a>
-        <a href="#tours">Virtual Eco-Tours</a>
-        <a href="#reviews">Eco-Friendly Product Reviews</a>
+        <a href="green.html">Green Innovation Showcase</a>
+        <a href="tours.html">Virtual Eco-Tours</a>
         <a href="#jobs">Green Jobs Directory</a>
         <a href="games.html">Educational Games and Quizzes</a>
         <a href="diy-projects.html">DIY Sustainability Projects</a>
         <a href="map.html">Local Environmental Impact Maps</a>
-        <a href="#recipes">Eco-Friendly Recipes</a>
-        <a href="#challenges">Monthly Eco Challenges</a>
+       
+        <a href="eco.html">Monthly Eco Challenges</a>
         <!-- User Profile Link -->
+        <a href="news.html">Newsletters</a>
         <a href="profile.html" onclick="showUserProfile()">User Profile</a>
+        <a href ="contact.html" >Contact Us</a>
     </nav>
-     <div id="welcome-message"></div>
+    <div id="welcome-message"></div>
     <div class="weather-container">
         <h1 id="location-name">Loading...</h1>
         <p id="current-time">Time: </p>
@@ -435,8 +436,6 @@ body::before {
                 innovations that are reshaping the future of sustainability.</li>
             <li><strong class ="feature">Embark on Virtual Eco-Tours:<br></strong> Immerse yourself in virtual experiences that showcase
                 eco-friendly destinations and sustainable practices from around the globe.</li>
-            <li><strong class="feature">Make Informed Choices with Product Reviews:<br></strong> Find and support eco-friendly products that
-                align with your values. Make informed decisions for a more sustainable lifestyle.</li>
             <li><strong class="feature">Find Eco-Conscious Career Paths:<br></strong> Connect with environmentally conscious job opportunities
                 and carve a career path that aligns with your passion for the planet.</li>
             <li><strong class="feature">Engage in Educational Games:<br></strong> Learning about environmental issues has never been this fun!
@@ -619,7 +618,7 @@ body::before {
                         dayElement.textContent = `Day: ${day}`;
                         pressureElement.textContent = `Pressure: ${pressure} hPa`;
                         humidityElement.textContent = `Humidity: ${humidity}%`;
-                        dewpointElement.textContent = `Dewpoint: ${dewpoint.toFixed(0) - 232}°C`;
+                        dewpointElement.textContent = `Dewpoint: ${dewpoint.toFixed(0) -227}°C`;
                         visibilityElement.textContent = `Visibility: ${visibility} km`;
                     } else {
                         console.error(`Failed to fetch weather data. Status: ${response.status}`);
@@ -664,7 +663,7 @@ const userName = localStorage.getItem('userName');
 if (userName) {
     const welcomeMessage = document.createElement("div");
     welcomeMessage.id = "welcome-message";
-    welcomeMessage.innerText = `Welcome, ${userName}! .`;
+    welcomeMessage.innerText = `Welcome, ${userName}!.`;
     document.getElementById("welcome-message").insertAdjacentElement('afterbegin', welcomeMessage);
 }
 
