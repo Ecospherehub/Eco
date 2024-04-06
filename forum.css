@@ -1,0 +1,34 @@
+/* Basic styles for layout and appearance */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 20px;
+}
+
+main {
+  padding: 20px;
+}
+
+#posts {
+  margin-bottom: 20px;
+}
+
+.post {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+#new-post input,
+#new-post textarea,
+#new-post button {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+}
