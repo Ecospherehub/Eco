@@ -15,19 +15,20 @@
       justify-content: center;
       min-height: 100vh;
       background-color: #f4f4f4;
-      background-image: url('https://media.istockphoto.com/id/1353967009/photo/sustainable-development-and-green-business-based-on-renewable-energy-reduce-co2-emission.jpg?s=612x612&w=0&k=20&c=-uOboxq_hAl7fFPTtYe3XSnExeeUVMVrpp0kKYNoTvI=');
+      background-image: url('https://advertisingweek.com/wp-content/uploads/2023/01/carbon-neutral-and-esg-concepts-carbon-emission-clean-energy-globe-balancing-between-a-green.jpg_s1024x1024wisk20cUZjMAOHpGtWFVw7D3JgEpa2RWgw4gL0OQFSV2AkPD1c.jpg');
       background-repeat: no-repeat;
       background-size: cover;
     }
 
     #calculator {
-      background-color: #fff;
+      background-color:palegoldenrod;
       border-radius: 8px;
       padding: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       width: 400px;
       text-align: center;
       transition: transform 0.3s ease-in-out;
+      justify-content: center;
     }
 
     input, select, button {
@@ -104,9 +105,23 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    button:hover{
+      background-color:red;
+      transform: scale(1.1);
+    }
+    header{
+      font-size:40px;
+      margin-bottom: 550px;
+      margin-left: 30px;
+      display: inline-flex;
+      position: absolute;
+    }
   </style>
 </head>
 <body>
+  <header>
+    EcoSphereHub-Carbon Calculator
+  </header>
   <div id="calculator">
     <h2>Carbon Footprint Calculator</h2>
     <label for="distance">Enter your distance (km): </label>
