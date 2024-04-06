@@ -11,6 +11,9 @@
             margin: 0;
             padding: 0;
             background-color: #f5f5f5;
+            background-repeat: no-repeat;
+           background-size: cover;
+            background-image: url('https://img.freepik.com/free-vector/space-game-background-with-landscape-planet_107791-1700.jpg?size=626&ext=jpg&ga=GA1.1.1395991368.1711584000&semt=ais');
         }
 
         header {
@@ -23,9 +26,12 @@
         nav {
             display: flex;
             justify-content: space-around;
-            background-color: #333;
+            background-color: transparent;
             padding: 0.5em;
             flex-wrap: wrap;
+            text-decoration: dashed;
+            font-size: large;
+            font-weight: 400;
         }
 
         nav a {
@@ -33,6 +39,11 @@
             text-decoration: none;
             padding: 0.5em 1em;
             margin: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        nav a:hover {
+            transform: translateY(-3px); /* Adding a hover effect */
         }
 
         section {
@@ -54,9 +65,11 @@
             justify-content: space-evenly;
             flex-wrap: wrap;
             padding: 20px;
+            gap: 20px; /* Adding gap between game containers */
         }
 
         .game-container {
+            position: relative;
             border: 2px solid #ddd;
             border-radius: 8px;
             padding: 20px;
@@ -65,92 +78,84 @@
             text-align: center;
             cursor: pointer;
             transition: transform 0.3s ease-in-out;
-            position: relative;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden; /* Prevents box-shadow overflow */
         }
 
         .game-container:hover {
             transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .game-info {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(255, 255, 255, 0.9);
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            z-index: 1000;
-        }
-
-        .game-container:hover .game-info {
-            display: block;
-        }
-
-        .difficulty-popup {
+        .modal {
             display: none;
             position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #fff;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
             z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
         }
 
-        .difficulty-popup label {
-            display: block;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            border-radius: 8px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .game-info h3 {
             margin-bottom: 10px;
         }
 
-        .custom-dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .custom-dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            min-width: 160px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            padding: 12px;
-            z-index: 1;
-            border-radius: 8px;
-        }
-
-        .custom-dropdown:hover .custom-dropdown-content {
-            display: block;
-        }
-
-        .custom-dropdown-option {
-            cursor: pointer;
-            padding: 8px;
-            transition: background-color 0.3s;
-        }
-
-        .custom-dropdown-option:hover {
-            background-color: #ddd;
-        }
-
-        .difficulty-popup button {
+        .play-game-btn {
             background-color: #4CAF50;
             color: white;
             border: none;
             padding: 10px 20px;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
         }
 
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
+        .play-game-btn:hover {
+            background-color: #45a049;
+        }
+        #quizzes{
+            background-color: #4CAF50;
+        }
+        #puzzles{
+            background-color: #4CAF50;
+        }
+        #matchups{
+            background-color: #4CAF50;
+        }
+        #image-guessing{
+            background-color: #4CAF50;
+        }
+        .game-container{
+            background-color: skyblue;
         }
     </style>
 </head>
@@ -161,64 +166,50 @@
     </header>
 
     <nav>
-        <a href="#quizzes">Quizzes</a>
-        <a href="#puzzles">Puzzles</a>
+        <a href="quiz.html">Quizzes</a>
+        <a href="rule.html">Puzzles</a>
         <a href="#matchups">Matchups</a>
-        <a href="#image-guessing">Image Guessing</a>
+        <a href="guessing.html">Image Guessing</a>
         <!-- Add more game types as needed -->
     </nav>
 
     <div class="game-container-wrapper">
         <section id="quizzes">
-            <div class="game-container" onclick="showDifficultyPopup('Quiz')">
+            <div class="game-container" onclick="showModal('Quiz', 'This is a quiz game. Test your knowledge  and have fun!', 'quiz.html')">
                 <h2>Quiz</h2>
-                <div class="game-info">
-                    <p>This is a quiz game. Test your knowledge and have fun!</p>
-                </div>
             </div>
         </section>
 
         <section id="puzzles">
-            <div class="game-container" onclick="showDifficultyPopup('Puzzle')">
+            <div class="game-container" onclick="showModal('Puzzle', 'Enjoy solving puzzles? This game is for you. Challenge yourself with various puzzles.', 'rule.html')">
                 <h2>Puzzle</h2>
-                <div class="game-info">
-                    <p>Enjoy solving puzzles? This game is for you. Challenge yourself with various puzzles.</p>
-                </div>
             </div>
         </section>
 
         <section id="matchups">
-            <div class="game-container" onclick="showDifficultyPopup('Matchup')">
+            <div class="game-container" onclick="showModal('Matchup', 'Match and pair elements in this exciting matchup game. Test your memory and have a great time!', 'matchup.html')">
                 <h2>Matchup</h2>
-                <div class="game-info">
-                    <p>Match and pair elements in this exciting matchup game. Test your memory and have a great time!</p>
-                </div>
             </div>
         </section>
 
         <section id="image-guessing">
-            <div class="game-container" onclick="showDifficultyPopup('Image Guessing')">
+            <div class="game-container" onclick="showModal('Image Guessing', 'Guess what in the image! Test your visual recognition skills with this entertaining game.', 'guessing.html')">
                 <h2>Image Guessing</h2>
-                <div class="game-info">
-                    <p>Guess what's in the image! Test your visual recognition skills with this entertaining game.</p>
-                </div>
             </div>
         </section>
 
         <!-- Add more sections for other game types -->
     </div>
 
-    <div class="difficulty-popup" id="difficultyPopup">
-        <span class="close-btn" onclick="closeDifficultyPopup()">&#10006;</span>
-        <label for="difficulty">Select Difficulty:</label>
-        <div class="custom-dropdown">
-            <div class="custom-dropdown-content">
-                <div class="custom-dropdown-option" onclick="selectDifficulty('beginner')">Beginner</div>
-                <div class="custom-dropdown-option" onclick="selectDifficulty('moderate')">Moderate</div>
-                <div class="custom-dropdown-option" onclick="selectDifficulty('hard')">Hard</div>
+    <div id="gameModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="hideModal()">&times;</span>
+            <div class="game-info">
+                <h3 id="gameTitle"></h3>
+                <p id="gameDescription"></p>
+                <button class="play-game-btn" id="playGameBtn">Play Game</button>
             </div>
         </div>
-        <button onclick="startGame()">Start Game</button>
     </div>
 
     <footer>
@@ -226,25 +217,17 @@
     </footer>
 
     <script>
-        function showDifficultyPopup(gameType) {
-            const difficultyPopup = document.getElementById('difficultyPopup');
-            difficultyPopup.style.display = 'block';
+        function showModal(title, description, gameUrl) {
+            document.getElementById('gameTitle').textContent = title;
+            document.getElementById('gameDescription').textContent = description;
+            document.getElementById('playGameBtn').onclick = function() {
+                window.location.href = gameUrl;
+            };
+            document.getElementById('gameModal').style.display = "block";
         }
 
-        function startGame() {
-            // Add logic to start the selected game with the chosen difficulty
-            alert('Game started!');
-            closeDifficultyPopup();
-        }
-
-        function closeDifficultyPopup() {
-            const difficultyPopup = document.getElementById('difficultyPopup');
-            difficultyPopup.style.display = 'none';
-        }
-
-        function selectDifficulty(difficulty) {
-            // Add logic to handle the selected difficulty
-            alert('Difficulty selected: ' + difficulty);
+        function hideModal() {
+            document.getElementById('gameModal').style.display = "none";
         }
     </script>
 </body>
