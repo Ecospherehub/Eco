@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="icon" type="image/png/jpg" href="logo1.jpg">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+</head>
+<body>
+   
+    <div class="aayush">
+     <img class= "logo"src="logo1.jpg" alt="Logo">
+    <h1> EcosphereHub</h1></div>
+    <div class="container">
+        <h2>Login Page</h2>
+        <form id="loginForm" onsubmit="return loginUser()">
+            <!-- Add the reCAPTCHA container -->
+          
+            <label for="username">Username:</label>
+            <input type="text" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" required>
+            <div class="g-recaptcha" data-sitekey="6LecuLIpAAAAAJxgyVw_67t_3pImpoyFzjtHMaHq"></div>
+
+            <button type="button" onclick="loginUser()">Login</button>
+        </form>
+        <p>Not registered? <a href="register.html">Register here</a>.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

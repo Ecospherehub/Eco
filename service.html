@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 0;
+            background-color: transparent;
+        }
+        
+    .navbar {
+      background-color: whitesmoke;
+      color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 20px;
+      transition: padding 0.3s, font-size 0.3s;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      
+    }
+
+    .navbar-scrolled {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      flex: 1;
+    }
+
+    .navbar-center {
+      flex: 2;
+      text-align: center;
+    }
+
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px; /* increased font size */
+    }
+
+    .navbar ul li a:hover {
+      background-color: #555;
+    }
+
+    .navbar h1 {
+      margin: 0;
+    }
+
+    .navbar img {
+      width: 50px; /* adjust as needed */
+      height: auto;
+    }
+
+    .dropdown-content {
+        display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 120px;
+  z-index: 1000; /* Ensure the dropdown appears above other elements */
+  top: 80%; /* Position the dropdown below the parent element */
+  right:6%;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f2f2f2;
+        }
+        .service-box {
+            width: calc(33.33% - 40px);
+            border-radius: 5px;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            position: relative;
+            background-color: #fff;
+            box-shadow: none;
+        }
+        .service-box:hover{
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            transition: all 0.3s ease-in-out;
+        }
+        .service-box h2 {
+            font-size: 24px;
+            margin-top: 0;
+        }
+        .service-box p {
+            font-size: 16px;
+            line-height: 1.5;
+            max-height: 20em;
+            overflow: hidden;
+        }
+        .service-img {
+            width: 100%; /* Adjusted width */
+            height: 250px; /* Maintain aspect ratio */
+            margin-bottom: 10px;
+            border-radius: 40%;
+            border-bottom:0cqmin;
+        }
+        .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 25px 35px; /* Increase padding to make the button larger */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px; /* Increase font size */
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .btn-container {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+    </style>
+
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="navbar-left">
+          <ul>
+            <li><a href="time.html">Home</a></li>
+            <li><a href="vision.html">Vision & Mission</a></li>
+          </ul>
+        </div>
+        <div class="navbar-center">
+          <img class="des" src="logo1.jpg" alt="Logo">
+          <h1 class="design">Ecospherehub</h1>
+        </div>
+        <div class="navbar-right">
+          <ul>
+            <li><a href="service.html">Services</a></li>
+            <li><a href="about.html">About</a></li>
+            <li class="dropdown">
+              <a href="#">More &#9662;</a>
+              <ul class="dropdown-content">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+        <div class="service-box">
+            <img src="https://c8.alamy.com/comp/2ATNK35/carbon-footprint-symbol-or-concept-barefoot-footprint-made-of-lush-green-grass-with-text-co2-2ATNK35.jpg" alt="Service 1 Image" class="service-img">
+            <h2>Carbon Calculator</h2>
+            <p>A tool to estimate carbon footprint, considering energy, transport, waste, and lifestyle.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='carbon.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIX7Bi8OeP3EqJrpzX4DkA742H6DG4gDuinUAMRDmQrg&s" alt="Service 2 Image" class="service-img">
+            <h2>Virtual Eco Tour</h2>
+            <p>A platform to explore eco-friendly destinations virtually with relevant pictures and videos.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='tours.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://mission-innovation.net/wp-content/uploads/2022/06/light-bulb.png" alt="Service 3 Image" class="service-img">
+            <h2>Green Inovation Showcase</h2>
+            <p>A social media platform highlighting eco-friendly innovations and initiatives akin to Instagram.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='green.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="service3.jpg" alt="Service 4 Image" class="service-img">
+            <h2>Green Job Directory</h2>
+            <p>A platform connecting job seekers with employment opportunities in environmentally sustainable industries.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='job.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://t4.ftcdn.net/jpg/04/39/13/37/360_F_439133763_FrLdhZsd5aGC23r9ATARuKJBr8ifZjIe.jpg" alt="Service 5 Image" class="service-img">
+            <h2>Educational Games and Quizzes</h2>
+            <p>A platform offering interactive activities aimed at educating users about environmental concepts and sustainability.</p>
+            <div class="btn-container">
+                <button class="btn"onclick="window.location.href='quiz.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src=" https://i.pinimg.com/736x/41/68/81/41688161e538416199d510f2150d3be3.jpg" alt="Service 6 Image" class="service-img">
+            <h2>DIY Sustainability Projects</h2>
+            <p>Projects providing creative ways to incorporate eco-friendly practices into daily life, promoting sustainability.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='diy-projects.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://watermark.lovepik.com/photo/50039/0206.jpg_wh1200.jpg" alt="Service 7 Image" class="service-img">
+            <h2>Local Environmental Maps</h2>
+            <p>Visual representations of environmental features and resources within a specific geographical area.</p>
+            <div class="btn-container">
+                <button class="btn" onclick="window.location.href='map.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://lirp.cdn-website.com/93803682/dms3rep/multi/opt/Widescreen-f95ebb47-1920w.png" class="service-img">
+            <h2>Monthly Eco Challenge</h2>
+            <p>A recurring initiative encouraging individuals to adopt environmentally friendly behaviors monthly.</p>
+            <div class="btn-container">
+                <button class="btn"onclick="window.location.href='challenges.html'">Learn More</button>
+            </div>
+        </div>
+        <div class="service-box">
+            <img src="https://media.istockphoto.com/id/1075972590/vector/hand-united-together-form-lines-triangles-and-particle-style-design-illustration-vector.jpg?s=612x612&w=0&k=20&c=FhGyRn8ThLncMbogiXDRBOd72lLNb-I7gSiKE3gnPNY=" alt="Service 9 Image" class="service-img">
+            <h2>Community Forum</h2>
+            <p>An online platform for individuals with shared environmental interests to engage in meaningful conversations.</p>
+            <div class="btn-container">
+                <button class="btn"onclick="window.location.href='forum.html'">Learn More</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user is logged in
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+        // Redirect to login page
+        window.location.href = 'login.html';
+    }
+});
+
+    </script>
+</body>
+</html>
