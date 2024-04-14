@@ -1,35 +1,656 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="icon" type="image/png/jpg" href="logo1.jpg">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecospherehub</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=montserrat">
+  <style>
+
+    /* Navbar styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .navbar {
+      background-color: whitesmoke;
+      color: black;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 20px;
+      transition: padding 0.3s, font-size 0.3s;
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      
+    }
+
+    .navbar-scrolled {
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+
+    .navbar-left,
+    .navbar-right {
+      flex: 1;
+      display: inline-block;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .navbar-center {
+      flex: 2;
+      text-align: center;
+    }
+
+    .navbar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      
+    }
+
+    .navbar ul li {
+      display: inline;
+    }
+
+    .navbar ul li a {
+      color: black;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 18px; /* increased font size */
+    }
+
+    .navbar ul li a:hover {
+      background-color: #555;
+    }
+
+    .navbar h1 {
+      margin: 0;
+    }
+
+    .navbar img {
+      width: 50px; /* adjust as needed */
+      height: auto;
+    }
+
+    /* .dropdown-content {
+  display: none;
+  position: absolute;
+  background-color:white;
+  min-width: 120px;
+  z-index: 1000; /* Ensure the dropdown appears above other elements */
+ /* top: 80%; /* Position the dropdown below the parent element */
+  /*right:6%;
+} */
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+
+    .dropdown-content a {
+      color: #fff;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    
+
+    /* Slideshow styles */
+    .slideshow-container {
+      max-width: 100%;
+      position: relative;
+      margin-top: 160px; /* Adjusted for navbar height */
+    }
+
+    .mySlides {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .text {
+      color:black;
+      font-size: 44px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight:800;
+      font-family: 'lobster',cursive;
+      @font-face {
+        font-family: 'lobster';
+        src: url('lobster.woff2') format('woff2'),
+        src: url('lobster.woff') format('woff');
+      }
+      
+      
+    }
+    .texts{
+      color:white;
+      font-size: 44px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      font-weight:800;
+      font-family: 'lobster',cursive;
+      @font-face {
+        font-family: 'lobster';
+        src: url('lobster.woff2') format('woff2'),
+        src: url('lobster.woff') format('woff');
+      }
+    }
+
+    /* Text below slideshow styles */
+    .text-below-slideshow {
+      color: rgb(13, 13, 13);
+      padding: 20px;
+      text-align: center;
+      margin-right: 400px;
+      margin-left: 400px;
+      font-style: italic;
+      font-size: 30px;
+    }
+
+    .chooses {
+      color: rgb(13, 13, 13);
+      padding: 20px;
+      text-align: center;
+      margin-right: 250px;
+      margin-left: 250px;
+      font-style: italic;
+      font-size: 30px;
+    }
+
+    .growing {
+      color: rgb(13, 13, 13);
+      padding: 20px;
+      text-align: center;
+      margin-right: 250px;
+      margin-left: 250px;
+      font-style: italic;
+      font-size: 30px;
+    }
+
+    .impacts {
+      color: rgb(13, 13, 13);
+      padding: 20px;
+      text-align: center;
+      margin-right: 50px;
+      margin-left: 50px;
+      font-style: italic;
+      font-size: 30px;
+    }
+
+    .logo {
+      text-align: center;
+    }
+
+    .logos {
+      width: 20px;
+      height: 20px;
+    }
+
+    .des {
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+    }
+
+    .design {
+      font-weight: 500;
+      font-style: sanfransisco;
+      font-size: 45px;
+    }
+
+    /* Weather container styles */
+  
+  /* Weather container styles */
+/* Weather container styles */
+.weather-container {
+  display: flex;
+  background:linear-gradient(90deg, rgba(74,66,197,1) 0%, rgba(48,103,161,1) 0%, rgba(212,218,221,1) 54%, rgba(186,211,228,1) 60%, rgba(180,177,227,1) 79%, rgba(153,147,237,1) 100%) ;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightblue;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  top: 140px;
+  padding: 10px 20px; /* Added padding for spacing */
+}
+
+.weather-details {
+  display: flex;
+  align-items: center;
+}
+
+.weather-details-left {
+  display: flex;
+  align-items: center;
+}
+
+.weather-details-left p {
+  margin: 0;
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+.weather-details-right {
+  display: flex;
+  align-items: center;
+  margin-left: 20px; /* Add margin between left and right details */
+}
+
+.weather-details-right p {
+  margin: 0 10px 0 0; /* Adjust margin as needed */
+}
+
+#weatherIcon {
+  width: 40px;
+  height: 40px;
+}
+
+
+
+.weather-container p {
+  margin: 0;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center; /* Align items horizontally */
+}
+
+.weather-info-horizontal {
+  display: flex;
+  align-items: center; /* Align items horizontally */
+  margin-right: 10px; /* Added margin for spacing */
+}
+
+.weather-container img {
+  width: 30px;
+  height: 30px;
+}
+
+#greeting {
+  font-size: 30px;
+  text-align: center;
+  margin-top: 0;
+ 
+  font-weight: 800;
+  text-decoration: solid;
+  font-style: ALGERIAN;
+  margin-right: auto; /* Push greeting to the left */
+}
+
+.puri{
+  display:flex;
+justify-content: flex-end;
+}
+#locationName {
+  font-size: 35px;
+  font-style: ALGERIAN; /* Adjust the font size as needed */
+  margin-right: 50px;
+  text-decoration: solid;
+  font-weight: 600;
+}
+.navbar ul li a {
+  color: black;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 23px; /* Increase the font size as needed */
+}
+/*----------------------------*/
+.dropdown {
+            position: relative;
+            display: inline-block;
+            left:55%;
+            top:10%;
+        }
+
+        .dropbtn {
+            background-color: #f1f1f1;
+            color: black;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            min-width: 160px;
+            border: 1px solid #ddd;
+            z-index: 1;
+            overflow-y: auto;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        input[type=checkbox] {
+            margin-right: 5px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .submit-btn {
+            margin-top: 10px;
+        }
+        .moreButton{
+          display: inline-block;
+        }
+        .dropdown-content{
+          top:90%;
+          right:-40%; 
+          background-color: whitesmoke;
+        }
+
+        .dropbtn{
+          position: relative;
+          font-size: 24px;
+          right:45%;
+        }
+        #log{
+          font-size: 20px;
+          padding: 10px;
+        }
+        #log:hover{
+          background-color: whitesmoke;
+          cursor: pointer;
+        }
+  </style>
 </head>
 <body>
-   
-    <div class="aayush">
-     <img class= "logo"src="logo1.jpg" alt="Logo">
-    <h1> EcosphereHub</h1></div>
-    <div class="container">
-        <h2>Login Page</h2>
-        <form id="loginForm" onsubmit="return loginUser()">
-            <!-- Add the reCAPTCHA container -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-left">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="vision.html">Vision & Mission</a></li>
+      </ul>
+    </div>
+    <div class="navbar-center">
+      <img class="des" src="logo1.jpg" alt="Logo">
+      <h1 class="design">Ecospherehub</h1>
+    </div>
+    <div class="navbar-right">
+      <ul>
+        <li><a href="service.html">Services</a></li>
+        <li><a href="about.html">About</a></li>
+        <li id="moreButton" style="display: none;">
+          <div class="dropdown">
+            <button class="dropbtn">More</button>
+            <div class="dropdown-content" id="dropdownContent" style="display: none;">
+              <a href="profile.html">Profile</a>
+              <p onclick="logout()" id="log">Logout</p>
+            </div>
+          </div>
+        </li>
+        
+          </div>
+        </li>
+        
           
-            <label for="username">Username:</label>
-            <input type="text" id="username" required>
+      </div>
+      </ul>
+    </div>
+  </nav>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" required>
-            <div class="g-recaptcha" data-sitekey="6LcYiZYpAAAAAFqC9hhySmOeqVGwR5wLIU4NMiDj"></div>
+  <!-- Weather container -->
+<!-- Weather container -->
+<!-- Weather container -->
+<!-- Weather container -->
+<!-- Weather container -->
+<div class="weather-container">
+  <p id="greeting"></p>
+  <div class="weather-details">
+    <div class="weather-details-left">
+      <p id="locationName"></p>
+      <p id="temperature"></p>
+    </div>
+    <div class="weather-details-right">
+      <p id="weatherDescription"></p>
+      <img id="weatherIcon" alt="Weather Icon">
+    </div>
+  </div>
+</div>
 
-            <button type="button" onclick="loginUser()">Login</button>
-        </form>
-        <p>Not registered? <a href="register.html">Register here</a>.</p>
+
+
+
+
+  <!-- Slideshow -->
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="https://cdn.pixabay.com/photo/2016/10/20/18/35/earth-1756274_1280.jpg">
+      <div class="texts"> Welcome to <hr style="border-color:black;">Ecospherehub</div>
     </div>
 
-    <script src="script.js"></script>
+    <div class="mySlides fade">
+      <img src="https://th.bing.com/th/id/OIG4.eG_6Jn_a6Cf5TaXM5pgE?w=1024&h=1024&rs=1&pid=ImgDetMain">
+      <div class="text">RIDE<hr style="border-color:black;"></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://www.pubaffairsbruxelles.eu/wp-content/uploads/2021/11/Climate-scaled.jpg">
+      <div class="text">RESTORE<hr style="border-color:black;"></div>
+    </div>
+<div class="mySlides fade">
+  <img src="https://www.psychologicalscience.org/redesign/wp-content/uploads/2022/04/Earth-Day-Online-1-1024x819.jpg">
+<div class="text">REVIVE<hr style="border-color: black;"></div>
+</div>
+    <!-- Add more slides as needed -->
+
+    <!-- Navigation buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <!-- Text below slideshow -->
+  <div class="text-below-slideshow">
+    <p>EcoSphereHub serves as a digital haven, fostering eco-conscious living and sustainability. It offers a diverse array of resources, tools, and experiences to empower individuals in their journey towards a greener tomorrow. Through innovative technology and community engagement, EcoSphereHub facilitates positive environmental impact and collective action for a sustainable future.</p>
+  </div>
+  <div class="choose">
+    <h1 align="center"> Why Choose EcoSphereHub?</h1>
+    <p class="chooses"> Choose EcoSphereHub for its cutting-edge technology, immersive virtual experiences, user-friendly interfaces, and real-world impact. Experience the intersection of sustainability and technology, making eco-conscious living accessible and enjoyable. Dive into virtual journeys to eco-friendly destinations, fostering a deeper connection with the environment. Our platform is designed with you in mind – intuitive, engaging, and ready to empower your green journey. Through challenges, education, and community support, EcoSphereHub contributes to a positive environmental impact, making it the ideal choice for those committed to a sustainable future.</p>
+  </div>
+  <div class="grow">
+    <h1 align="center"> Growing Together</h1>
+    <p class="growing"> EcoSphereHub isn't just your typical platform—it's a vibrant and dynamic community dedicated to environmental stewardship and sustainability. At EcoSphereHub, we believe that together, we can achieve far more than we could individually. That's why we've created a space where like-minded individuals and organizations come together to collaborate, support one another, and drive positive change for our planet.</p>
+  </div>
+  <div class="impact">
+    <h1 align="center"> Make Positive Impact</h1>
+    <p class="impacts">
+
+      Your actions matter. Whether it's reducing your carbon footprint, supporting local initiatives, advocating for environmental policies, or making more conscious consumer choices, every action you take has the potential to create meaningful change.<br>
+      By signing up with EcoSphereHub, you're not only joining a community of like-minded individuals who share your passion for sustainability, but you're also committing to taking tangible steps towards a greener future. Together, we can leverage our collective strength to make strides towards sustainability in our daily lives, our communities, and beyond.
+
+      But the impact doesn't stop there. By becoming part of the green movement, you're also inspiring others to take action and fostering a culture of environmental awareness and responsibility. Your involvement sends a powerful message that sustainability matters and that together, we have the power to shape a better world for future generations</p>
+  </div>
+  <section class="logo">
+    <p><strong>Follow us on </strong>
+      <a href="https://www.facebook.com/"><img class="logos" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png "width="20px" height="20px" alt="Facebook Logo"></a> |
+      <a href="https://www.twitter.com/"><img class="logos" src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg" width="20px" height="20px" alt="Twitter Logo"></a> |
+      <a href="https://www.instagram.com/"><img class="logos" src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" width="20px" height="20px" alt="Instagram Logo"></a>
+  </section>
+  <script>
+    
+    function submitSelection() {
+            let selectedItems = [];
+            let checkboxes = document.querySelectorAll(
+                'input[type=checkbox]:checked');
+            checkboxes.forEach(function (checkbox) {
+                selectedItems.push(checkbox.value);
+            });
+            alert("Selected items: " + selectedItems.join(', '));
+        }
+   window.onscroll = function () { scrollFunction() };
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    document.getElementById("navbar").classList.add("navbar-scrolled");
+  } else {
+    document.getElementById("navbar").classList.remove("navbar-scrolled");
+  }
+}
+
+let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  const slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) { slideIndex = 1 }
+  slides[slideIndex - 1].style.display = "block";
+  setTimeout(showSlides, 5000); // Change image every 5 seconds
+}
+
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Get the current hour of the day
+var currentTime = new Date().getHours();
+
+// Get the greeting message based on the current time
+var greeting;
+if (currentTime >= 5 && currentTime < 12) {
+  greeting = "Good morning,";
+} else if (currentTime >= 12 && currentTime < 18) {
+  greeting = "Good afternoon,";
+} else {
+  greeting = "Good evening,";
+}
+
+// Display the greeting message in the div
+document.getElementById("greeting").innerText = greeting;
+
+
+function askForLocationPermission() {
+  return new Promise((resolve, reject) => {
+    navigator.permissions.query({ name: 'geolocation' }).then(permissionStatus => {
+      if (permissionStatus.state === 'granted') {
+        resolve();
+      } else if (permissionStatus.state === 'prompt') {
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            resolve();
+          },
+          error => {
+            reject(`Error getting location: ${error.message}`);
+          }
+        );
+      } else {
+        reject('Location permission denied');
+      }
+    });
+  });
+}
+
+async function fetchWeatherData() {
+  try {
+    await askForLocationPermission();
+
+    const { latitude, longitude } = await getCurrentPosition();
+    const apiKey = 'f8102c3d607f6c1faca1debc59a9ee69';
+
+    const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`);
+    const data = await response.json();
+
+    if (response.ok) {
+      const weatherIcon = data.weather[0].icon;
+      const isDay = weatherIcon.endsWith('d');
+      document.getElementById('weatherIcon').src = `https://openweathermap.org/img/wn/${weatherIcon}.png`;
+
+      const locationName = data.name;
+      const temperature = (data.main.temp - 273.15).toFixed(2);
+      const weatherDescription = data.weather[0].description;
+
+      document.getElementById('locationName').textContent = ` ${locationName}`;
+      document.getElementById('temperature').textContent = ` ${temperature}°C`;
+      document.getElementById('weatherDescription').textContent = ` ${weatherDescription}`;
+
+      // You need to add similar lines for other weather-related elements
+
+    } else {
+      console.error(`Failed to fetch weather data. Status: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
+}
+
+function getCurrentPosition() {
+  return new Promise((resolve, reject) => {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        const { latitude, longitude } = position.coords;
+        resolve({ latitude, longitude });
+      },
+      error => {
+        reject(`Error getting location: ${error.message}`);
+      }
+    );
+  });
+}
+
+function formatTime12Hrs(date) {
+  const options = { hour: 'numeric', minute: 'numeric', hour12: true };
+  return new Intl.DateTimeFormat('en-US', options).format(date);
+}
+
+fetchWeatherData();
+document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user is logged in
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    const moreButton = document.getElementById('moreButton');
+    const dropdownContent = document.getElementById('dropdownContent');
+    if (isLoggedIn) {
+        // Show the "More" button if logged in
+        let body = document.getElementsByClassName('slideshow-container');
+        moreButton.style.display = 'inline-block';
+        function myfunction(){
+          dropdownContent.style.display = 'inline-block';
+        }
+        moreButton.addEventListener('click',myfunction);
+        // Show the dropdown content if logged in
+       function myfunctionnn(){
+        dropdownContent.style.display = 'none';
+       }
+        body[0].addEventListener('click',myfunctionnn);
+    }
+});
+function logout() {
+    // Clear session variables
+    sessionStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('currentUser');
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
+
+      
+  </script>
 </body>
 </html>
