@@ -48,7 +48,7 @@ function loginUser() {
         // Set the current user in local storage
         localStorage.setItem('currentUser', JSON.stringify(user));
         setTimeout(() => {
-            window.location.href = 'service.html';
+            window.location.href = 'index.html';
         }, 3000);
     } else {
         showPopup('Login failed. Please check your credentials and try again.', '❌');
