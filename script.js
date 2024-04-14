@@ -114,7 +114,7 @@ function registerUser() {
 
     showPopup('Registration successful! You can now log in.', '✅');
     setTimeout(() => {
-        window.location.href = 'index.html';
+        window.location.href = 'login.html';
     }, 3000);
 }
 
