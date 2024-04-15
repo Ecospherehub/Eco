@@ -78,15 +78,7 @@
       height: auto;
     }
 
-    /* .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color:white;
-  min-width: 120px;
-  z-index: 1000; /* Ensure the dropdown appears above other elements */
- /* top: 80%; /* Position the dropdown below the parent element */
-  /*right:6%;
-} */
+ 
 
 .dropdown:hover .dropdown-content {
   display: block;
@@ -121,7 +113,7 @@
 
     .text {
       color:black;
-      font-size: 44px;
+      font-size: 60px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -139,7 +131,7 @@
     }
     .texts{
       color:white;
-      font-size: 44px;
+      font-size: 60px;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -184,6 +176,15 @@
       font-style: italic;
       font-size: 30px;
     }
+    .Joins{
+      color: rgb(13, 13, 13);
+      padding: 20px;
+      text-align: center;
+      margin-right: 250px;
+      margin-left: 250px;
+      font-style: italic;
+      font-size: 30px;
+    }
 
     .impacts {
       color: rgb(13, 13, 13);
@@ -214,6 +215,7 @@
       font-weight: 500;
       font-style: sanfransisco;
       font-size: 45px;
+      font-weight: 900;
     }
 
     /* Weather container styles */
@@ -227,9 +229,11 @@
   align-items: center;
   background-color: lightblue;
   width: 100%;
+  height: 100px;
   box-sizing: border-box;
   position: relative;
-  top: 140px;
+  top: 170px;
+  border:2px dashed black;
   padding: 10px 20px; /* Added padding for spacing */
 }
 
@@ -377,6 +381,65 @@ justify-content: flex-end;
           background-color: whitesmoke;
           cursor: pointer;
         }
+        footer {
+    background-color:darkred;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.footer-column {
+    flex: 1;
+    padding: 0 20px;
+}
+
+.footer-column h3 {
+    margin-bottom: 10px;
+}
+
+.footer-column p,
+.footer-column ul {
+    margin: 0;
+    padding: 0;
+}
+
+.footer-column ul {
+    list-style: none;
+}
+
+.footer-column ul li {
+    margin-bottom: 5px;
+}
+
+.footer-column ul li a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #4CAF50;
+}
+.butons{
+  display: flex;
+  justify-content: space-around;
+
+  
+
+}
+.buttons{
+  background-color:whitesmoke;
+ padding:20px;
+ font-size: 20px;
+}
+
   </style>
 </head>
 <body>
@@ -454,7 +517,7 @@ justify-content: flex-end;
       <div class="text">RESTORE<hr style="border-color:black;"></div>
     </div>
 <div class="mySlides fade">
-  <img src="https://www.psychologicalscience.org/redesign/wp-content/uploads/2022/04/Earth-Day-Online-1-1024x819.jpg">
+  <img src="https://www.mannlawyers.com/wp-content/uploads/2023/07/environmental-protection-act-iStock-1135947405.jpg.webp      ">
 <div class="text">REVIVE<hr style="border-color: black;"></div>
 </div>
     <!-- Add more slides as needed -->
@@ -466,7 +529,7 @@ justify-content: flex-end;
 
   <!-- Text below slideshow -->
   <div class="text-below-slideshow">
-    <p>EcoSphereHub serves as a digital haven, fostering eco-conscious living and sustainability. It offers a diverse array of resources, tools, and experiences to empower individuals in their journey towards a greener tomorrow. Through innovative technology and community engagement, EcoSphereHub facilitates positive environmental impact and collective action for a sustainable future.</p>
+    <p>"EcoSphereHub serves as a digital haven, fostering eco-conscious living and sustainability. It offers a diverse array of resources, tools, and experiences to empower individuals in their journey towards a greener tomorrow. Through innovative technology and community engagement, EcoSphereHub facilitates positive environmental impact and collective action for a sustainable future."</p>
   </div>
   <div class="choose">
     <h1 align="center"> Why Choose EcoSphereHub?</h1>
@@ -476,6 +539,12 @@ justify-content: flex-end;
     <h1 align="center"> Growing Together</h1>
     <p class="growing"> EcoSphereHub isn't just your typical platform—it's a vibrant and dynamic community dedicated to environmental stewardship and sustainability. At EcoSphereHub, we believe that together, we can achieve far more than we could individually. That's why we've created a space where like-minded individuals and organizations come together to collaborate, support one another, and drive positive change for our planet.</p>
   </div>
+  <div class="join"> 
+    <h1 align="center"> Join Eco-Challenges</h1>
+    <p class="Joins">Welcome to EcoChallenges, your daily journey towards a greener and more sustainable lifestyle! At EcoChallenges, we believe that small actions can lead to significant impacts, and we invite you to join us on a daily adventure dedicated to environmental protection and sustainability.
+        
+    </p>
+  </div>
   <div class="impact">
     <h1 align="center"> Make Positive Impact</h1>
     <p class="impacts">
@@ -483,14 +552,66 @@ justify-content: flex-end;
       Your actions matter. Whether it's reducing your carbon footprint, supporting local initiatives, advocating for environmental policies, or making more conscious consumer choices, every action you take has the potential to create meaningful change.<br>
       By signing up with EcoSphereHub, you're not only joining a community of like-minded individuals who share your passion for sustainability, but you're also committing to taking tangible steps towards a greener future. Together, we can leverage our collective strength to make strides towards sustainability in our daily lives, our communities, and beyond.
 
-      But the impact doesn't stop there. By becoming part of the green movement, you're also inspiring others to take action and fostering a culture of environmental awareness and responsibility. Your involvement sends a powerful message that sustainability matters and that together, we have the power to shape a better world for future generations</p>
-  </div>
+      But the impact doesn't stop there. By becoming part of the green movement, you're also inspiring others to take action and fostering a culture of environmental awareness and responsibility. Your involvement sends a powerful message that sustainability matters and that together, we have the power to shape a better world for future generations.</p>
+ 
+    </div>
+    <div
+      class="butons">
+    <button  class="buttons"type="button" onclick="window.location.href='service.html'">Explore features</button>
+    <button class="buttons" type="button" onclick="window.location.href='contact.html'">contact us</button>
+    </div>
+    
   <section class="logo">
     <p><strong>Follow us on </strong>
       <a href="https://www.facebook.com/"><img class="logos" src="https://upload.wikimedia.org/wikipedia/commons/6/6c/Facebook_Logo_2023.png "width="20px" height="20px" alt="Facebook Logo"></a> |
       <a href="https://www.twitter.com/"><img class="logos" src="https://static.dezeen.com/uploads/2023/07/x-logo-twitter-elon-musk_dezeen_2364_col_0-1.jpg" width="20px" height="20px" alt="Twitter Logo"></a> |
       <a href="https://www.instagram.com/"><img class="logos" src="https://png.pngtree.com/png-clipart/20230401/original/pngtree-three-dimensional-instagram-icon-png-image_9015419.png" width="20px" height="20px" alt="Instagram Logo"></a>
   </section>
+  <footer>
+    <div class="container">
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <p>Email: ecospherehub@gmail.com</p>
+            <p>Phone: +91 70872-12258</p>
+            <p>CU-HP Solan Himachal Pradesh</p>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="time.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="service.html">Services</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Blog</h3>
+            <ul>
+                <li><a href="#">Latest Posts</a></li>
+                <li><a href="#">Popular Topics</a></li>
+                <li><a href="#">Subscribe</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Follow Us</h3>
+            <ul>
+                <li><a href="https://facebook.com/">Facebook</a></li>
+                <li><a href="https://www.twitter.com/">Twitter</a></li>
+                <li><a href="https://www.instagram.com/">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/aayush-kaushal-76ab01252?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Careers</h3>
+            <ul>
+              <li> <a href="community.html">Join Us</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+    </div>
+</footer>
+
   <script>
     
     function submitSelection() {
@@ -546,6 +667,10 @@ if (currentTime >= 5 && currentTime < 12) {
 
 // Display the greeting message in the div
 document.getElementById("greeting").innerText = greeting;
+
+
+
+
 
 
 function askForLocationPermission() {
@@ -650,7 +775,25 @@ function logout() {
     window.location.href = 'login.html';
 }
 
-      
+document.addEventListener('DOMContentLoaded', function() {
+    const blogLink = document.getElementById('blog-link');
+    
+    blogLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        
+        // Ask for notification permission
+        if (Notification.permission !== 'granted') {
+            Notification.requestPermission().then(function(permission) {
+                if (permission === 'granted') {
+                    showNotification();
+                }
+            });
+        } else {
+            showNotification();
+        }
+    });
+  });
+    
   </script>
 </body>
-</html>
+</html>    
