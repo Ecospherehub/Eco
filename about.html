@@ -50,7 +50,6 @@
             text-align: center;
             padding: 10px;
             background-color: #fff;
-           
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out;
         }
@@ -77,6 +76,89 @@
             font-size: 16px;
             color: #555;
         }
+
+        .faq-container {
+            background-color: #fff;
+            padding: 50px 20px;
+            text-align: left;
+            max-width: 800px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .faq-heading {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .faq-answer {
+            display: none;
+            color: #555;
+            margin-left: 20px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .symbol {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .feedback-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+        }
+
+        .feedback-container h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .feedback-form input,
+        .feedback-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+        }
+
+        .feedback-form input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .feedback-form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 
@@ -98,7 +180,6 @@
                     <h3>Aayush Kaushal</h3>
                     <span class="contact-icon">&#9993;</span> Email:
                     <a href="mailto:kaushalaayush2004@gmail.com">Click here</a>
-               
                 </div>
                 <div class="team-member">
                     <img src="https://s3.amazonaws.com/cbrig-assets/csoethp/resources/Student/S125n8ee.JPG" alt="Team Member 2">
@@ -121,6 +202,113 @@
             </div>
         </div>
     </div>
+
+    <div class="faq-container">
+        <h2 class="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>What is EcoSphereHub all about?</div>
+            <div class="faq-answer">EcoSphereHub is a digital platform dedicated to promoting eco-friendly living and
+                sustainability. Our mission is to empower individuals to make positive environmental changes through education, engagement, and community support.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>How can I contribute to EcoSphereHub?</div>
+            <div class="faq-answer">You can contribute to EcoSphereHub by participating in eco-friendly activities, sharing your sustainable practices, and engaging with our community to raise awareness about environmental issues.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>Is EcoSphereHub free to use?</div>
+            <div class="faq-answer">Yes, EcoSphereHub is free to use for all users. We believe in making sustainability accessible to everyone.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>How do I join EcoSphereHub's community?</div>
+            <div class="faq-answer">You can join EcoSphereHub's community by signing up for an account on our platform. Once registered, you'll have access to various features, forums, and events to engage with like-minded individuals.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>Are there any age restrictions to use EcoSphereHub?</div>
+            <div class="faq-answer">EcoSphereHub is open to users of all ages. We encourage individuals of all backgrounds to join our community and contribute to a more sustainable future.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>Can I suggest new features for EcoSphereHub?</div>
+            <div class="faq-answer">Yes, we welcome feedback and suggestions from our users. If you have ideas for new features or improvements, feel free to reach out to us through our contact form or community forums.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>How secure is my data on EcoSphereHub?</div>
+            <div class="faq-answer">At EcoSphereHub, we take data privacy and security seriously. We employ industry-standard encryption and security measures to safeguard your personal information and ensure a safe browsing experience.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question" onclick="toggleAnswer(this)"><span class="symbol">+</span>Does EcoSphereHub have a mobile app?</div>
+            <div class="faq-answer">Currently, EcoSphereHub is accessible through web browsers on desktop and mobile devices. We are actively working on developing a mobile app to provide a seamless user experience on smartphones and tablets.</div>
+        </div>
+    </div>
+
+    <div class="feedback-container">
+        <h2>Have a question or feedback?</h2>
+        <form id="feedback-form" action="#" method="post">
+            <input type="email" name="email" placeholder="Your Email" required>
+            <br>
+            <textarea name="message" placeholder="Enter your message" required></textarea>
+            <br>
+            <input type="submit" value="Submit" onclick="SendFeedback()">
+        </form>
+    </div>
+
+    <script>
+        function toggleAnswer(element) {
+            element.parentElement.classList.toggle('active');
+        }
+
+        document.getElementById('feedback-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var formData = new FormData(this);
+
+            // Send feedback data to your email address
+            var feedbackData = {
+                email: formData.get('email'),
+                message: formData.get('message')
+            };
+
+            // Simulate sending feedback to email (replace with actual email sending code)
+            console.log('Feedback submitted successfully:', feedbackData);
+
+            // Show feedback submission success message
+            alert('Feedback submitted successfully!');
+
+            // Clear the form fields
+            this.reset();
+        });
+        function SendFeedback() {
+    const email = document.getElementById("email");
+    const message = document.getElementById("message");
+
+    const feedbackData = {
+        email: email.value,
+        message: message.value
+    };
+
+    const emailBody = `
+        <h1>Feedback from EcoSphereHub</h1>
+        <p><strong>Email:</strong> ${feedbackData.email}</p>
+        <p><strong>Message:</strong> ${feedbackData.message}</p>
+        <p>Thanks for your feedback!</p>
+    `;
+
+    Email.send({
+        SecureToken: "91a228f6-639f-48fd-9083-f7c28af0b798",
+        To: "ecospherehub@gmail.com", // Your email address here
+        From: "Ecospherehub@gmail.com",
+        Subject: "Feedback from EcoSphereHub",
+        Body: emailBody,
+        }).then(message => {
+            if (message === "OK") {
+                alert("Feedback submitted successfully!");
+                email.value = ""; // Clear the email input field
+                message.value = ""; // Clear the message input field
+            }
+        });
+}
+
+    </script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 
 </html>
