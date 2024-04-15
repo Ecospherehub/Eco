@@ -41,16 +41,26 @@
     map.on('click', onMapClick);
 
     function onMapClick(e) {
-      const popupContent = `
-        <b>Environmental Information</b><br>
-        Location: ${e.latlng.lat.toFixed(4)}, ${e.latlng.lng.toFixed(4)}<br>
-        Environmental Condition: Good<br>
-        Local Impact: Low<br>
-        Other Information: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      `;
+      const latlng = e.latlng;
+      // Reverse geocoding to get location name
+      fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latlng.lat}&lon=${latlng.lng}&zoom=18&addressdetails=1`)
+        .then(response => response.json())
+        .then(data => {
+          const locationName = data.display_name;
+          const popupContent = `
+            <b>Environmental Information</b><br>
+            Location: ${locationName}<br>
+            Environmental Condition: Good<br>
+            Local Impact: Low<br>
+             
+          `;
 
-      const marker = L.marker(e.latlng).addTo(map);
-      marker.bindPopup(popupContent).openPopup();
+          const marker = L.marker(latlng).addTo(map);
+          marker.bindPopup(popupContent).openPopup();
+        })
+        .catch(error => {
+          console.error('Error:', error);
+        });
     }
   </script>
 </body>
