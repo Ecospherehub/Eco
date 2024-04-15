@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            width: 100%;
+            height: 100vh;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-box {
+            max-width: 860px;
+            max-height: 2000vh;
+            display: grid;
+            grid-gap: 10px;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #fff;
+            box-shadow: 0px 0px 18px 5px rgba(0, 0, 0, 0.19);
+        }
+
+        .left iframe {
+            padding: 10px 10px;
+            width: 100%;
+            height: 470px;
+        }
+
+        .right {
+            padding: 25px 40px;
+        }
+
+        h2 {
+            position: relative;
+            padding: 0 0 10px;
+            margin-bottom: 10px;
+        }
+
+        h2:after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+            height: 4px;
+            width: 50px;
+            border-radius: 2px;
+            background-color: orange;
+        }
+
+        .field {
+            width: 100%;
+            border: 2px solid rgba(0, 0, 0, 0);
+            outline: none;
+            background-color: rgba(230, 230, 230, 0.6);
+            padding: .5rem 1rem;
+            margin-bottom: 22px;
+            transition: .3s;
+        }
+
+        .field:hover {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        .btn {
+            width: 100%;
+            padding: .5rem 1rem;
+            background-color: orange;
+            font-size: 1.1rem;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            background: #27ae60;
+        }
+
+        .field:focus {
+            border: 2px solid rgba(30, 85, 250, .7);
+            background: #fff;
+        }
+
+        @media screen and (max-width:769px) {
+            .contact-box {
+                grid-template-columns: 1fr;
+            }
+
+            .left iframe {
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="contact-box">
+            <div class="left">
+           
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3424.3332047634367!2d76.8697594756269!3d30.87733847451481!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ff55d9e0ed113%3A0x34a6cadf9a13d341!2sCHITKARA%20UNIVERSITY%2C%20BADDI!5e0!3m2!1sen!2sin!4v1711636454834!5m2!1sen!2sin" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="right">
+                <h2>Contact us</h2>
+                <form method="POST" id="form">
+
+                    <!-- Replace with your Access Key -->
+                    <input type="hidden" name="access_key" value="729c202f-4d3c-4857-9495-19693490bf75">
+                
+                    <!-- Form Inputs. Each input must have a name="" attribute -->
+                    <input type="text" id="name" class="field" placeholder="Your Name">
+                    <input type="email" id="email"class="field" placeholder="Your Email">
+                    <input type="text" id="phone"class="field" placeholder="Your Mobile No.">
+                    <textarea name="message"class="field" placeholder="How can we help you?"></textarea>
+                
+                    <!-- hCaptcha Spam Protection -->
+                   
+                
+                    <button class="btn" type="submit">Send</button>
+                    <div id="result"></div>
+                </form>
+                <!-- Required for hCaptcha -->
+               
+                
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://web3forms.com/client/script.js" async defer></script>
+    
+    <script>
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+    
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(form);
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+      result.innerHTML = "Please wait..."
+    
+        fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    result.innerHTML = "Form submitted successfully";
+                } else {
+                    console.log(response);
+                    result.innerHTML = json.message;
+                }
+            })
+            .catch(error => {
+                console.log(error);
+                result.innerHTML = "Something went wrong!";
+            })
+            .then(function() {
+                form.reset();
+                setTimeout(() => {
+                    result.style.display = "none";
+                }, 3000);
+            });
+    });
+    </script>
+</body>
+
+</html>
