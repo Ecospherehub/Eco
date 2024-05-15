@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecospherehub Awareness Program</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+section {
+    margin: 20px 0;
+}
+
+#banner {
+    background-color:rgb(189, 234, 189);
+    color:black;
+    padding: 20px;
+}
+
+#ongoing-programs {
+    padding: 20px;
+    background-color: rgb(243, 243, 228);
+}
+
+#ongoing-programs h2 {
+    color: black;
+}
+
+#program-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    
+}
+
+.program {
+    background-color:rgb(244, 205, 191);
+    border: 1px solid #ccc;
+    padding: 20px;
+    flex: 1 1 300px;
+
+}
+
+#start-program {
+    padding: 20px;
+}
+
+#start-program h2 {
+    color: #007bff;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ecospherehub Awareness Program</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="about1.html">About</a></li>
+                <li><a href="#ongoing-programs">Programs</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="banner">
+        <h2>Welcome to Ecospherehub Awareness Program</h2>
+        <p>Creating a sustainable future through environmental awareness.</p>
+    </section>
+
+    <section id="ongoing-programs">
+        <h2>Ongoing Programs</h2>
+        <div id="program-list"></div>
+    </section>
+    
+    <section id="start-program">
+        <h2>Start Your Own Program</h2>
+        <form id="program-form" action="/api/start-program" method="POST">
+            <label for="name"> Name:</label>
+            <input type="text" id="name" name="Name" required><br><br>
+            <label for="program-name">Program Name:</label>
+            <input type="text" id="program-name" name="programName" required><br><br>
+            <label for="organizing-date">Organizing Date:</label>
+            <input type="date" id="organizing-date" name="organizingDate" required><br><br>
+            <label for="venue">Venue:</label>
+            <input type="text" id="venue" name="venue" required><br><br>
+            <label for="details">Details:</label><br>
+            <textarea id="details" name="details" required></textarea><br><br>
+            <label for="image">Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required><br><br>
+            <input type="submit" value="Start Program">
+        </form>
+    </section>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const fetchPrograms = async () => {
+        try {
+            const response = await fetch('/api/programs');
+            const programs = await response.json();
+            const programList = document.getElementById('program-list');
+            programList.innerHTML = ''; // Clear previous programs
+            programs.forEach(program => {
+                const programDiv = document.createElement('div');
+                programDiv.classList.add('program');
+                programDiv.innerHTML = `
+                    <h3>${program.name}</h3>
+                    <p><strong>Organizing Date:</strong> ${program.organizing_date}</p>
+                    <p><strong>Venue:</strong> ${program.venue}</p>
+                    <p><strong>Details:</strong> ${program.details}</p>
+                    <img src="${program.image}" alt="Program Image">
+                `;
+                programList.appendChild(programDiv);
+            });
+        } catch (error) {
+            console.error('Error fetching programs:', error);
+        }
+    };
+
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+        const requestData = {};
+        formData.forEach((value, key) => {
+            requestData[key] = value;
+        });
+        try {
+            const response = await fetch('/api/start-program', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(requestData)
+            });
+            if (response.ok) {
+                console.log('Program started successfully');
+                form.reset();
+                fetchPrograms(); // Refresh program list
+                alert('Program started successfully!');
+            } else {
+                console.error('Failed to start program:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error starting program:', error);
+        }
+    };
+
+    const programForm = document.getElementById('program-form');
+    programForm.addEventListener('submit', handleFormSubmit);
+
+    fetchPrograms();
+});
+
+    </script>
+</body>
+</html>
