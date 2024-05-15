@@ -11,7 +11,6 @@
             padding: 0;
             background-color:rgb(236, 236, 187);
         }
-        
     .navbar {
       background-color: whitesmoke;
       color: black;
@@ -74,28 +73,32 @@
     }
 
     .dropdown-content {
-        display: none;
-  position: absolute;
-  background-color:white;
-  min-width: 120px;
-  z-index: 1000; /* Ensure the dropdown appears above other elements */
-  top: 80%; /* Position the dropdown below the parent element */
-  right:6%;
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-
-    .dropdown-content a {
-      color: #fff;
-      padding: 10px;
-      text-decoration: none;
-      display: block;
-    }
-
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 120px;
+    z-index: 1000; /* Ensure the dropdown appears above other elements */
+    top: 70%; /* Position the dropdown below the parent element */
+    right: 7%;
     
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -163,8 +166,8 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-left">
           <ul>
-            <li><a href="time.html">Home</a></li>
-            <li><a href="vision.html">Vision & Mission</a></li>
+            <li><a href="/time.html">Home</a></li>
+            <li><a href="/vision.html">Vision & Mission</a></li>
           </ul>
         </div>
         <div class="navbar-center">
@@ -176,10 +179,11 @@
             <li><a href="service.html">Services</a></li>
             <li><a href="about.html">About</a></li>
             <li class="dropdown">
-              <a href="#">More &#9662;</a>
+              <a href="#" id="content-drop">More &#9662;</a>
+              
               <ul class="dropdown-content">
                 <li><a href="profile.html">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li onclick="logout()"><a href="#">Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -216,11 +220,11 @@
             </div>
         </div>
         <div class="service-box">
-            <img src="service3.jpg" alt="Service 4 Image" class="service-img">
-            <h2>Green Job Directory</h2>
-            <p>A platform connecting job seekers with employment opportunities in environmentally sustainable industries.</p>
+            <img src="https://static.vecteezy.com/system/resources/previews/005/332/358/non_2x/little-boy-throwing-trash-into-litter-bin-free-vector.jpg" alt="Service 4 Image" class="service-img">
+            <h2>Environment Awareness Programs</h2>
+            <p>An online platform for organizing and promoting environmental awareness programs, fostering a community dedicated to sustainable practices and environmental stewardship.</p>
             <div class="btn-container">
-                <button class="btn" onclick="window.location.href='job.html'">Learn More</button>
+                <button class="btn" onclick="window.location.href='awareness.html'">Learn More</button>
             </div>
         </div>
         <div class="service-box">
@@ -244,7 +248,7 @@
             <h2>Local Environmental Maps</h2>
             <p>Visual representations of environmental features and resources within a specific geographical area.</p>
             <div class="btn-container">
-                <button class="btn" onclick="window.location.href='map.html'">Learn More</button>
+                <button class="btn" onclick="window.location.href='mapsopen.html'">Learn More</button>
             </div>
         </div>
         <div class="service-box">
@@ -265,7 +269,39 @@
         </div>
     </div>
     <script>
-     
+      document.addEventListener("DOMContentLoaded", function() {
+    // Check if the user is logged in
+    const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+    if (!isLoggedIn) {
+        // Redirect to login page
+        window.location.href = 'login.html';
+    }
+
+    // Get the elements
+    const moreButton = document.getElementById('content-drop');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    // Toggle the dropdown content when the "More" button is clicked
+    moreButton.addEventListener('click', function() {
+        dropdownContent.classList.toggle('show');
+    });
+
+    // Close the dropdown content if the user clicks outside of it
+    window.addEventListener('click', function(event) {
+        if (!event.target.matches('#content-drop')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+        }
+    });
+});
+function logout() {
+    // Clear session variables
+    sessionStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('currentUser');
+    // Redirect to login page
+    window.location.href = 'login.html';
+}
 
     </script>
 </body>
