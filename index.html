@@ -440,6 +440,83 @@ justify-content: flex-end;
  font-size: 20px;
 }
 
+    /* For devices up to 768px width, typically mobile phones */
+@media only screen and (max-width: 768px) {
+  .navbar {
+    padding: 10px 20px;
+  }
+
+  .navbar-center {
+    flex: 1;
+    text-align: center;
+  }
+
+  .navbar img {
+    width: 40px; /* Adjust size of logo for smaller screens */
+  }
+
+  .navbar ul li a {
+    font-size: 16px; /* Decrease font size for smaller screens */
+  }
+
+  .dropdown-content {
+    top: 100%; /* Adjust dropdown position for smaller screens */
+    right: -50%; /* Adjust dropdown position for smaller screens */
+    background-color: whitesmoke;
+  }
+
+  .dropbtn {
+    font-size: 20px; /* Decrease font size for smaller screens */
+    right: 40%; /* Adjust button position for smaller screens */
+  }
+
+  #log {
+    font-size: 18px; /* Decrease font size for smaller screens */
+  }
+
+  .text,
+  .texts {
+    font-size: 40px; /* Decrease font size for smaller screens */
+  }
+
+  .text-below-slideshow,
+  .chooses,
+  .growing,
+  .Joins,
+  .impacts {
+    margin-right: 20px; /* Adjust margins for smaller screens */
+    margin-left: 20px; /* Adjust margins for smaller screens */
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .weather-container {
+    top: 200px; /* Adjust position for smaller screens */
+    padding: 10px; /* Adjust padding for smaller screens */
+  }
+
+  .weather-info-horizontal {
+    margin-right: 5px; /* Adjust margin for smaller screens */
+  }
+
+  .footer-column {
+    flex: 1;
+    padding: 0 10px; /* Adjust padding for smaller screens */
+  }
+
+  .footer-column h3 {
+    font-size: 20px; /* Decrease font size for smaller screens */
+  }
+
+  .footer-column ul li a {
+    font-size: 16px; /* Decrease font size for smaller screens */
+  }
+
+  .buttons {
+    font-size: 16px; /* Decrease font size for smaller screens */
+    padding: 15px; /* Adjust padding for smaller screens */
+  }
+}
+
   </style>
 </head>
 <body>
