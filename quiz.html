@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Environmental Quizzes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color:lightseagreen;
+    }
+    
+    h1, h2 {
+      text-align: center;
+    }
+    
+    #instructions{
+      width: 80%;
+      margin: 0 auto;
+      /* text-align: center; */
+      padding: 20px;
+      background-color: mediumaquamarine;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+    }
+    #quiz{
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      padding: 20px;
+      background-color: mediumaquamarine;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      font-weight: 600;
+    }
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: black;
+      color: #fff;
+    }
+    
+    button:hover {
+      background-color: #0056b3;
+    }
+    
+    #options button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff; /* Change default color to blue */
+      color: #fff;
+    }
+    
+    #options button.clicked {
+      background-color: #dc3545; /* Change clicked option color to red */
+    }
+  </style>
+</head>
+<body>
+  <h1>Environmental Quizzes</h1>
+  
+  <div id="instructions">
+    <ol>Instructions<ol><br>
+    <li> Answer questions by clicking on the correct option.</li><br>
+    <li> Use "Next" to move forward and "Previous" to go back.</li><br>
+    <li> Reset the quiz anytime by clicking "Reset".</li><br>
+    <li> Submit your answers with "Get Score" when done.</li><br>
+    <li> View your quiz records after submission.</li><br>
+    <li> Start a new quiz with "Start Quiz Again".</li><br>
+    <li> Stay in fullscreen until the test is over to avoid automatic submission.</li><br>
+    <li> Monitor the timer to track remaining time; you have 5 minutes to complete the quiz</li><br>
+    <p align="center">Please select a difficulty level below:</p>
+    <div align="center">
+    <button id="easy">Easy</button>
+    <button id="moderate">Moderate</button>
+    <button id="hard">Hard</button>
+    <div id="lastQuizRecords">
+      <h2>Last Played Quiz Records</h2>
+      <ul id="quizRecordsList"></ul>
+    </div>
+    </div>
+    
+  </div>
+ 
+  <div id="quiz" style="display: none;">
+    <h2>Quiz</h2>
+    <p id="question"></p>
+    <div id="options"></div>
+    <button id="previous" style="display: none;">Previous</button>
+    <button id="next">Next</button>
+    <button id="reset">Reset</button>
+    <button id="submit" style="display: none;">Get Score</button>
+    <button id="start-again" style="display: none;">Start Quiz Again</button> <!-- Button to start quiz again -->
+    <p id="timer"></p>
+    <div id="score"></div> <!-- Element to display score -->
+  </div>
+  
+  <script>
+    let currentQuestion = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 300; // 5 minutes in seconds
+    let quizStarted = false; // Variable to track if quiz has started
+
+    const questions = [
+      {
+        question: "What is the primary source of energy in fossil fuels?",
+        options: ["Solar energy", "Wind energy", "Organic matter", "Hydro energy"],
+        answer: "Organic matter"
+      },
+      {
+        question: "Which gas is most responsible for climate change?",
+        options: ["Oxygen", "Carbon dioxide", "Nitrogen", "Argon"],
+        answer: "Carbon dioxide"
+      },
+      {
+        question: "What is the largest source of water pollution?",
+        options: ["Industrial waste", "Agricultural runoff", "Sewage", "Plastic waste"],
+        answer: "Agricultural runoff"
+      },
+      {
+        question: "What is the primary greenhouse gas emitted from agriculture?",
+options: ["Methane", "Carbon monoxide", "Sulfur dioxide", "Nitrous oxide"],
+answer: "Methane"
+      },
+      {
+        question: "Which type of pollution is caused by the burning of fossil fuels in vehicles?",
+options: ["Air pollution", "Water pollution", "Noise pollution", "Thermal pollution"],
+answer: "Air pollution"
+      },
+      {
+        question: "What is the main cause of ozone depletion in the stratosphere?",
+options: ["Carbon dioxide emissions", "Chlorofluorocarbons (CFCs)", "Methane emissions", "Nitrogen oxides"],
+answer: "Chlorofluorocarbons (CFCs)"
+      },
+      {
+        question: "Which human activity is a major contributor to deforestation?",
+options: ["Fishing", "Mining", "Urbanization", "Logging"],
+answer: "Logging"
+      },
+      {
+        question: "What is the primary source of marine plastic pollution?",
+options: ["Fishing nets", "Plastic bottles", "Microplastics", "Single-use plastics"],
+answer: "Single-use plastics"
+      }
+    ];
+
+    function showInstructions(difficulty) {
+  document.getElementById("instructions").style.display = "none";
+  document.getElementById("quiz").style.display = "block";
+  startQuiz(difficulty);
+}
+function startQuiz(difficulty) {
+  currentQuestion = 0;
+  score = 0;
+  shuffle(questions);
+  showQuestion();
+  startTimer();
+  document.getElementById("submit").style.display = "none";
+  document.getElementById("start-again").style.display = "none";
+  document.getElementById("score").innerText = "";
+  document.getElementById("previous").style.display = "none";
+  if (currentQuestion > 0) {
+    document.getElementById("previous").style.display = "inline-block";
+  }
+  document.getElementById("reset").style.display = "inline-block";
+  document.getElementById("next").style.display = "inline-block";
+  const elem = document.documentElement;
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  }
+  quizStarted = true;
+  document.getElementById("lastQuizRecords").style.display = "none";
+
+  // Store the difficulty level
+  currentDifficulty = difficulty;
+}
+
+    function showQuestion() {
+  const questionElement = document.getElementById("question");
+  const optionsElement = document.getElementById("options");
+  const currentQuestionObj = questions[currentQuestion];
+  questionElement.innerText = currentQuestionObj.question;
+  optionsElement.innerHTML = "";
+  
+  const gridContainer = document.createElement("div");
+  gridContainer.style.display = "grid";
+  gridContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
+  gridContainer.style.gap = "-5px"; // Decreased gap between buttons
+  gridContainer.style.justifyItems = "center";
+  
+  currentQuestionObj.options.forEach(option => {
+    const button = document.createElement("button");
+    button.innerText = option;
+    button.addEventListener("click", () => selectAnswer(option));
+    gridContainer.appendChild(button);
+  });
+  
+  optionsElement.appendChild(gridContainer);
+}
+
+  
+ 
+
+    function selectAnswer(option) {
+      if (!quizStarted) return; // Prevent selecting answer if quiz hasn't started
+      const currentQuestionObj = questions[currentQuestion];
+      const clickedButton = event.target;
+      currentQuestionObj.options.forEach(btn => {
+        if (btn === option) {
+          clickedButton.classList.add("clicked"); // Add clicked class to change color
+          if (option === currentQuestionObj.answer) {
+            score++;
+          }
+        }
+      });
+    }
+
+    function nextQuestion() {
+      currentQuestion++;
+      showQuestion();
+      // Display previous button if not on the first question
+      if (currentQuestion > 0) {
+        document.getElementById("previous").style.display = "inline-block";
+      }
+      // Hide submit button if it's not the last question
+      if (currentQuestion === questions.length - 1) {
+        document.getElementById("next").style.display = "none";
+        document.getElementById("submit").style.display = "inline-block";
+      }
+    }
+
+    function previousQuestion() {
+      currentQuestion--;
+      showQuestion();
+      // Hide previous button if it's the first question
+      if (currentQuestion === 0) {
+        document.getElementById("previous").style.display = "none";
+      }
+      // Hide submit button if it's not the last question anymore
+      if (currentQuestion < questions.length - 1) {
+        document.getElementById("next").style.display = "inline-block";
+        document.getElementById("submit").style.display = "none";
+      }
+    }
+
+    function resetQuiz() {
+  currentQuestion = 0;
+  score = 0;
+  showQuestion();
+  document.querySelectorAll("#options button").forEach(btn => {
+    btn.classList.remove("clicked");
+  });
+  document.getElementById("lastQuizRecords").style.display = "block"; // Show last quiz records
+}
+    function startTimer() {
+      timer = setInterval(() => {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById("timer").innerText = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          document.getElementById("timer").innerText = "Time's Up!";
+          submitQuiz();
+        }
+      }, 1000);
+    }
+
+    function submitQuiz() {
+      clearInterval(timer);
+      document.getElementById("submit").disabled = true;
+      displayScore();
+    }
+
+    function displayScore() {
+  const scoreElement = document.getElementById("score");
+  const currentDate = new Date();
+  scoreElement.innerText = `Quiz submitted on ${currentDate}! Your score: ${score}/${questions.length}`;
+  document.getElementById("start-again").style.display = "inline-block";
+  quizStarted = false;
+
+  // Store the quiz record in the database
+  storeQuizRecord(currentDate, score, currentDifficulty);
+}
+function startQuizAgain() {
+  document.getElementById("quiz").style.display = "none";
+  document.getElementById("instructions").style.display = "block";
+  timeLeft = 300;
+  document.getElementById("timer").innerText = "";
+  document.getElementById("start-again").style.display = "none";
+  document.getElementById("lastQuizRecords").style.display = "block"; // Show last quiz records
+}
+
+    // Fisher-Yates shuffle algorithm
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Enter fullscreen mode
+    function enterFullscreen() {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+      }
+    }
+
+    // Prevent exiting fullscreen
+    document.addEventListener("fullscreenchange", function () {
+      if (!document.fullscreenElement && quizStarted) {
+        // If user exits fullscreen and quiz is started, submit quiz
+        submitQuiz();
+        displayScore();
+        alert("Test submitted successfully!");
+      }
+    });
+
+    document.getElementById("easy").addEventListener("click", () => showInstructions("easy"));
+    document.getElementById("moderate").addEventListener("click", () => showInstructions("moderate"));
+    document.getElementById("hard").addEventListener("click", () => showInstructions("hard"));
+    document.getElementById("next").addEventListener("click", nextQuestion);
+    document.getElementById("previous").addEventListener("click", previousQuestion);
+    document.getElementById("reset").addEventListener("click", resetQuiz);
+    document.getElementById("submit").addEventListener("click", submitQuiz);
+    document.getElementById("start-again").addEventListener("click", startQuizAgain); // Event listener for start quiz again button
+
+    // Call enterFullscreen function to enter fullscreen mode automatically
+    enterFullscreen();
+    function storeQuizRecord(date, score, difficulty) {
+  const data = { date, score, difficulty };
+
+  fetch('/quiz', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(data)
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Failed to store quiz record');
+    }
+    console.log('Quiz record stored successfully');
+    fetchLastQuizRecords(); // Fetch and update the quiz records list after storing a new record
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+    // Function to fetch and display last played quiz records
+    function fetchLastQuizRecords() {
+      fetch('/quiz')
+      .then(response => response.json())
+      .then(records => {
+        const quizRecordsList = document.getElementById('quizRecordsList');
+        quizRecordsList.innerHTML = '';
+        records.forEach(record => {
+          const listItem = document.createElement('li');
+          listItem.textContent = `${record.date} - Score: ${record.score}, Difficulty: ${record.difficulty}`;
+          quizRecordsList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching quiz records:', error);
+      });
+    }
+
+    // Call fetchLastQuizRecords() when the page loads
+    window.addEventListener('load', fetchLastQuizRecords);
+  </script>
+</body>
+</html>
