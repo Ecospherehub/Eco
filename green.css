@@ -1,0 +1,269 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   background-color:burlywood;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: darkkhaki;
+   }
+.container2{
+    font-size: larger;
+    max-width: 200px;
+    margin: 0 auto;
+    padding:0%;
+    background-color: maroon;
+    color:#f3f3f3;
+}
+/* Header styles */
+header {
+    background-color: lightskyblue;
+    padding: 10px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Main content area */
+main {
+    padding: 20px 0;
+}
+
+.post {
+    margin-bottom: 20px;
+}
+
+.post img {
+    max-width: 100%;
+}
+
+.actions {
+    margin-top: 10px;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.like-icon, .story-icon, .comment-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.like span, .comment span {
+    margin-left: 5px;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Comment modal styles */
+#commentInput {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+/* Popup styles */
+.heart-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #ff0000;
+    font-size: 40px;
+    animation: pop-up 1s ease-out;
+}
+
+@keyframes pop-up {
+    0% { transform: scale(1); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+.puri{
+    border: 3px solid black;
+    width: 30%;
+    margin:0 auto;
+    background-color: whitesmoke;
+}
+
+.uploading-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.uploading-popup .loading-spinner {
+    border: 6px solid #f3f3f3;
+    border-top: 6px solid #3498db;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto 20px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.upload-success {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.upload-success img {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    animation: tick-animation 0.5s;
+}
+
+@keyframes tick-animation {
+    0% { transform: scale(0); }
+    80% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+
+.stories-container {
+    display: flex;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.story {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.story img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.story-progress {
+    height: 3px;
+    width: 100%;
+    background-color: #4caf50;
+}
+/* Story Modal styles */
+#storyModal {
+    display: none;
+    position: fixed;
+    z-index: 2;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #ccc;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Story Progress Bar styles */
+.story-progress {
+    height: 5px;
+    background-color: #ccc;
+    width: 0;
+    position: absolute;
+    bottom: 0;
+}

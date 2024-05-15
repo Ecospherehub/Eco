@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Innovation Showcase</title>
+    <link rel="stylesheet" href="green.css">
+    <style>
+        body{
+        background-color:lightseagreen;    
+        }
+        .h1{
+           text-align: center;
+           margin-left: 40px;
+           font-weight: 900;
+           text-decoration: underline;    
+           margin-right: 50px;       
+
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Green Innovation Showcase</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="#" onclick="openUploadModal()">Upload</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+            
+                </ul>
+        
+            </nav>
+        </div>
+
+    </header>
+    <div class="puri">
+    <h1 class="h1">Recent Posts</h1>
+<!-- Top Stories Section -->
+<div id="storyContainer" class="stories-container">
+    <!-- Stories will be dynamically added here -->
+</div>
+<!-- Story Modal -->
+<div id="storyModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeStoryModal()">&times;</span>
+        <img id="modalStoryImage" src="" alt="Story">
+        <div id="storyProgressBar" class="story-progress"></div>
+    </div>
+</div>
+
+    <!-- Main content area -->
+    <main>
+        <div class="container" id="postContainer">
+            <!-- Posts will be dynamically added here -->
+        
+        </div>
+    </main>
+</div>
+    <!-- Footer -->
+    <footer>
+        <div class="container2">
+            <p>&copy; 2024 Green Innovation Showcase</p>
+        </div>
+
+    </footer>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeUploadModal()">&times;</span>
+            <h2>Upload Options</h2>
+            <label for="fileUpload">Select File:</label>
+            <input type="file" id="fileUpload" accept="image/*">
+            <button onclick="uploadStory()">Upload Story</button>
+            <button onclick="uploadPost()">Upload Post</button>
+        </div>
+    </div>
+
+    <!-- Comment Modal -->
+    <div id="commentModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCommentModal()">&times;</span>
+            <h2>Add Comment</h2>
+            <input type="text" id="commentInput" placeholder="Enter your comment">
+            <button onclick="submitComment()">Submit</button>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="green.js"></script>
+</body>
+</html>
