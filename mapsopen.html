@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ecospherehub Maps</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      text-align: center;
+    }
+
+    #map {
+      height: 400px;
+      position: relative;
+    }
+
+    .legend {
+      display: inline-block;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      text-align: left;
+    }
+
+    .legend-item span {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to Ecospherehub Maps</h1>
+    <p>Below are instructions on how to use the maps:</p>
+      <div class="legend">
+        <div class="legend-item">
+          <span style="background-color: red;"></span> Bad Environment Condition
+        </div>
+        <div class="legend-item">
+          <span style="background-color: green;"></span> Good Environment Condition
+        </div>
+        <div class="legend-item">
+          <span style="background-color: yellow;"></span> Moderate Environment Condition
+        </div>
+      </div>
+    <ul>
+      <li>Click on the map to view environmental information about a location.</li>
+      <li>Use the legend to understand environmental conditions:</li>
+    </ul>
+    <p>Local environmental maps can help you understand the environmental conditions of your area and make informed decisions.</p>
+    <button onclick="maps()">Open Map</button>
+  </div>
+  <script>
+    function maps(){
+        window.location.href="map.html";
+    }
+  </script>
+</body>
+</html>
