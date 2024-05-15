@@ -13,11 +13,49 @@
 
     #map {
       height: 100vh;
+      position: relative;
+    }
+
+    #legend {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .legend-item {
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+
+    .legend-item span {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+    }
+
+    .theme-button {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      padding: 10px;
+      background-color: white;
+      border: 3px solid #cccccc;
+      border-radius: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
+ 
+ 
+  <div>
   <div id="map"></div>
+  </div>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
     const indiaBounds = [
@@ -25,20 +63,47 @@
       [6.4627, 97.3956]   // Northeast coordinates
     ];
 
-    const map = L.map('map', {
-      center: [20.5937, 78.9629],
-      zoom: 5,
-      maxBounds: indiaBounds,
-      maxBoundsViscosity: 1.0,
-      minZoom: 5,
-      zoomControl: false
-    });
+    let map;
+    let tileLayer;
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '&copy; OpenStreetMap contributors'
-    }).addTo(map);
+    function initializeMap() {
+      map = L.map('map', {
+        center: [20.5937, 78.9629],
+        zoom: 5,
+        maxBounds: indiaBounds,
+        maxBoundsViscosity: 1.0,
+        minZoom: 5,
+        zoomControl: false
+      });
 
-    map.on('click', onMapClick);
+      tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; Ecospherehub contributors'
+      }).addTo(map);
+      
+    }
+
+    function toggleMapTheme() {
+      if (tileLayer) {
+        // Remove existing tile layer
+        map.removeLayer(tileLayer);
+        // Add new tile layer with different theme
+        tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; Ecospherehub contributors',
+          maxZoom: 19,
+          id: 'mapbox.dark' // Change 'mapbox.dark' to any other available theme ID for different themes
+        }).addTo(map);
+      }
+    }
+
+    function getRandomCondition() {
+      const conditions = ['Good', 'Moderate', 'High'];
+      return conditions[Math.floor(Math.random() * conditions.length)];
+    }
+
+    function getRandomImpact() {
+      const impacts = ['good', 'Moderate', 'poor'];
+      return impacts[Math.floor(Math.random() * impacts.length)];
+    }
 
     function onMapClick(e) {
       const latlng = e.latlng;
@@ -47,21 +112,39 @@
         .then(response => response.json())
         .then(data => {
           const locationName = data.display_name;
+          const environmentalCondition = getRandomCondition();
+          const localImpact = getRandomImpact();
           const popupContent = `
             <b>Environmental Information</b><br>
             Location: ${locationName}<br>
-            Environmental Condition: Good<br>
-            Local Impact: Low<br>
-             
+            Environmental Condition: ${environmentalCondition}<br>
+            Air Quality: ${localImpact}<br>
           `;
 
           const marker = L.marker(latlng).addTo(map);
           marker.bindPopup(popupContent).openPopup();
+
+          // Define array of colors
+          const colors = ['red', 'green', 'yellow'];
+
+          // Randomly select a color from the array
+          const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+          // Create a polygon around the clicked point
+          const polygon = L.polygon([
+            [latlng.lat + 0.2, latlng.lng + 0.2],
+            [latlng.lat - 0.2, latlng.lng + 0.2],
+            [latlng.lat - 0.2, latlng.lng - 0.2],
+            [latlng.lat + 0.2, latlng.lng - 0.2]
+          ], { color: randomColor }).addTo(map);
         })
         .catch(error => {
           console.error('Error:', error);
         });
     }
+
+    initializeMap();
+    map.on('click', onMapClick);
   </script>
 </body>
 </html>
